@@ -14,17 +14,17 @@
                 extend: {
                     colors: {
                         warm: {
-                            50:  '#fdf8f0',
-                            100: '#f0e6d6',
-                            200: '#e0d0b8',
-                            300: '#d4c4a0',
-                            400: '#c8a96e',
+                            50:  '#fefcf8',
+                            100: '#f7ead3',
+                            200: '#eddbba',
+                            300: '#dcc296',
+                            400: '#c9a45e',
                             500: '#b08d4a',
-                            600: '#8b7040',
-                            700: '#6a5530',
-                            800: '#3d3224',
-                            900: '#1e1814',
-                            950: '#110e0a',
+                            600: '#8b6b36',
+                            700: '#6b512a',
+                            800: '#4a3b32',
+                            900: '#2c241b',
+                            950: '#1a140e',
                         }
                     },
                     fontFamily: {
@@ -38,44 +38,69 @@
     </script>
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
         html { scroll-behavior: smooth; }
 
         body {
-            background: radial-gradient(ellipse at 50% 40%, #1e1814 0%, #110e0a 70%);
-            color: #f0e6d6;
+            /* 奶白色背景：更醇厚的奶油色调 */
+            background: radial-gradient(ellipse at 50% 20%, #fff9e6 0%, #f7e8d0 60%, #ebdcc0 100%);
+            color: #4a3b32;
             font-family: 'Inter', system-ui, sans-serif;
             overflow: hidden;
             min-height: 100vh;
             min-height: 100dvh;
+            position: relative;
         }
 
-        /* ── Film Grain Overlay ── */
+        /* ═══ Flowing Gold Text ═══ */
+        .gold-text {
+            background: linear-gradient(90deg, #8B6914 0%, #B8860B 12%, #C5973D 25%, #DAA520 38%, #E8C36A 50%, #DAA520 62%, #C5973D 75%, #B8860B 88%, #8B6914 100%);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: goldFlow 4s ease-in-out infinite;
+        }
+        .gold-text-slow {
+            background: linear-gradient(90deg, #8B6914 0%, #B8860B 12%, #C5973D 25%, #DAA520 38%, #E8C36A 50%, #DAA520 62%, #C5973D 75%, #B8860B 88%, #8B6914 100%);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: goldFlow 6s ease-in-out infinite;
+        }
+        @keyframes goldFlow {
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* ═══ Film Grain ═══ */
         #grain {
             position: fixed; inset: -10%; width: 120%; height: 120%;
-            pointer-events: none; z-index: 10000;
+            pointer-events: none; z-index: 9000;
             background-repeat: repeat;
-            animation: grainDrift 6s steps(8) infinite;
+            opacity: 0.3;
+            mix-blend-mode: multiply;
+            animation: grainDrift 8s steps(10) infinite;
         }
         @keyframes grainDrift {
             0%   { transform: translate(0, 0); }
-            14%  { transform: translate(-3%, -6%); }
-            28%  { transform: translate(5%, -2%); }
-            42%  { transform: translate(-2%, 5%); }
-            57%  { transform: translate(4%, 3%); }
-            71%  { transform: translate(-5%, -3%); }
-            85%  { transform: translate(2%, 6%); }
+            10%  { transform: translate(-2%, -2%); }
+            30%  { transform: translate(2%, -4%); }
+            50%  { transform: translate(-2%, 2%); }
+            70%  { transform: translate(2%, 4%); }
+            90%  { transform: translate(-2%, -2%); }
             100% { transform: translate(0, 0); }
         }
 
-        /* ── Vignette ── */
+        /* ═══ Vignette ═══ */
         .vignette {
             position: fixed; inset: 0;
-            pointer-events: none; z-index: 9998;
-            background: radial-gradient(ellipse at center, transparent 45%, rgba(8,6,4,0.5) 100%);
+            pointer-events: none; z-index: 8999;
+            background: radial-gradient(circle at center, transparent 50%, rgba(180, 150, 100, 0.06) 100%);
         }
 
-        /* ── Page System ── */
+        /* ═══ Page System ═══ */
         .page {
             position: fixed; inset: 0;
             display: flex; align-items: center; justify-content: center;
@@ -89,9 +114,9 @@
         .page.active { opacity: 1; visibility: visible; }
         .page.active ~ .page { opacity: 0; visibility: hidden; }
 
-        /* ── Home Animations ── */
+        /* ═══ Animations ═══ */
         @keyframes fadeSlideUp {
-            from { opacity: 0; transform: translateY(40px); }
+            from { opacity: 0; transform: translateY(30px); }
             to   { opacity: 1; transform: translateY(0); }
         }
         @keyframes fadeIn {
@@ -110,97 +135,146 @@
         .anim-6 { animation: fadeSlideUp 0.8s ease 2.1s both; }
         .anim-line { animation: lineExpand 1s ease 1.3s both; }
 
-        /* ── Decorative Line ── */
+        /* ═══ Decorative Line ═══ */
         .deco-line {
-            height: 1px; background: linear-gradient(90deg, transparent, #c8a96e, transparent);
+            height: 1px; 
+            background: linear-gradient(90deg, transparent, #C5973D, transparent);
         }
 
-        /* ── Input Styling ── */
+        /* ═══ Input ═══ */
         .input-warm {
             background: transparent;
-            border: none; border-bottom: 1px solid rgba(200,169,110,0.3);
-            padding: 0.75rem 0; color: #f0e6d6;
+            border: none; border-bottom: 1.5px solid rgba(181, 138, 56, 0.35);
+            padding: 0.75rem 0;
+            color: #9e7c2e; /* Deep sand gold */
             font-family: 'Noto Serif SC', serif;
-            font-size: 1.1rem; text-align: center;
+            font-size: 1.25rem; text-align: center; font-weight: 600;
             outline: none; width: 100%;
             transition: border-color 0.4s ease;
         }
-        .input-warm:focus { border-color: #c8a96e; }
-        .input-warm::placeholder { color: rgba(200,169,110,0.35); }
+        .input-warm:focus { border-color: #B8860B; }
+        .input-warm::placeholder { color: rgba(181, 138, 56, 0.35); font-style: italic; font-weight: 400; }
 
-        /* ── Button ── */
+        /* ═══ Button ═══ */
         .btn-warm {
-            display: inline-block; padding: 1rem 3rem;
-            border: 1px solid rgba(200,169,110,0.4);
-            background: transparent; color: #e0d0b8;
-            font-family: 'Noto Serif SC', serif; font-size: 0.95rem;
-            letter-spacing: 0.15em; cursor: pointer;
+            display: inline-block; padding: 1rem 3.5rem;
+            border: 1px solid rgba(181, 138, 56, 0.35);
+            background: rgba(255,252,245,0.6);
+            color: #8B6914;
+            font-family: 'Noto Serif SC', serif; font-size: 0.95rem; font-weight: 600;
+            letter-spacing: 0.2em; cursor: pointer;
             transition: all 0.5s cubic-bezier(0.4,0,0.2,1);
             position: relative; overflow: hidden;
+            backdrop-filter: blur(4px);
         }
         .btn-warm::before {
             content: ''; position: absolute; inset: 0;
-            background: linear-gradient(135deg, rgba(200,169,110,0.1), rgba(200,169,110,0.05));
+            background: linear-gradient(135deg, #B8860B, #DAA520);
             transform: scaleX(0); transform-origin: left;
             transition: transform 0.5s ease;
+            z-index: -1;
+        }
+        .btn-warm:hover {
+            border-color: #B8860B; color: #fff;
+            box-shadow: 0 10px 30px rgba(184, 134, 11, 0.2);
         }
         .btn-warm:hover::before { transform: scaleX(1); }
-        .btn-warm:hover {
-            border-color: #c8a96e; color: #f0e6d6;
-            box-shadow: 0 0 30px rgba(200,169,110,0.08);
-        }
 
-        /* ── Quiz Option ── */
+        /* ═══ Quiz Option ═══ */
         .option-btn {
             width: 100%; text-align: left;
-            padding: 1.1rem 1.5rem;
-            border: 1px solid rgba(200,169,110,0.1);
-            border-radius: 6px;
-            background: rgba(30,24,20,0.35);
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-            color: #d4c4a0;
-            font-family: 'Noto Serif SC', serif; font-size: 0.95rem;
+            padding: 1.2rem 1.8rem;
+            border: 1px solid rgba(181, 138, 56, 0.2);
+            border-radius: 4px; /* 稍微圆润一点 */
+            background: rgba(255, 252, 248, 0.65);
+            box-shadow: 0 4px 15px rgba(181, 138, 56, 0.06);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            font-family: 'Noto Serif SC', serif; font-size: 1rem;
             line-height: 1.7; cursor: pointer;
-            transition: all 0.45s cubic-bezier(0.4,0,0.2,1);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
             position: relative; overflow: hidden;
         }
-        .option-btn::before {
-            content: ''; position: absolute;
-            top: 50%; left: 50%;
-            width: 0; height: 0;
-            background: radial-gradient(circle, rgba(200,169,110,0.1), transparent 70%);
-            border-radius: 50%;
-            transform: translate(-50%,-50%);
-            transition: width 0.6s ease, height 0.6s ease;
+        .option-btn .opt-letter {
+            color: #B8860B;
+            opacity: 0.6;
+            transition: color 0.3s;
+        }
+        .option-btn .opt-text {
+            background: linear-gradient(135deg, #7a5c12, #9e7c2e, #B8860B, #9e7c2e, #7a5c12);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: goldFlow 6s ease-in-out infinite;
         }
         .option-btn:hover {
-            border-color: rgba(200,169,110,0.35);
-            background: rgba(35,28,22,0.55);
-            color: #f0e6d6;
-            transform: translateX(4px);
+            border-color: #DAA520;
+            background: rgba(255,252,245,0.95);
+            transform: translateY(-3px) scale(1.01);
+            box-shadow: 0 10px 30px rgba(184, 134, 11, 0.18);
         }
-        .option-btn:hover::before { width: 350%; height: 350%; }
+        .option-btn:hover .opt-text {
+            background: linear-gradient(135deg, #6b4f0e, #8B6914, #DAA520, #8B6914, #6b4f0e);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: goldFlow 3s ease-in-out infinite;
+        }
+        
+        /* 选中状态美化：流光玻璃质感 */
         .option-btn.selected {
-            border-color: #c8a96e;
-            background: rgba(200,169,110,0.12);
-            color: #f0e6d6;
+            border-color: #DAA520;
+            /* 半透明金色玻璃，带流光 */
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(218, 165, 32, 0.25));
+            box-shadow: 0 0 20px rgba(218, 165, 32, 0.3), inset 0 0 10px rgba(255, 255, 255, 0.4);
+            transform: scale(0.98);
+        }
+        .option-btn.selected::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+            animation: shimmer 0.6s ease-out forwards;
+        }
+        @keyframes shimmer {
+            100% { left: 100%; }
+        }
+        
+        .option-btn.selected .opt-text {
+            /* 选中后文字变为深金色实色，更清晰 */
+            background: none;
+            -webkit-text-fill-color: #8B6914;
+            text-shadow: 0 1px 2px rgba(255,255,255,0.8);
+            font-weight: 600;
+        }
+        .option-btn.selected .opt-letter { 
+            color: #8B6914; 
+            opacity: 1; 
+            font-weight: bold;
+        }
+        
+        /* 点击按压效果 */
+        .option-btn:active {
+            transform: scale(0.96);
         }
 
-        /* ── Progress Bar ── */
+        /* ═══ Progress Bar ═══ */
         .progress-track {
-            width: 100%; max-width: 500px; height: 2px;
-            background: rgba(200,169,110,0.1); border-radius: 1px;
+            width: 100%; max-width: 500px; height: 3px;
+            background: rgba(181, 138, 56, 0.1); border-radius: 2px;
             overflow: hidden;
         }
         .progress-fill {
             height: 100%; width: 0%;
-            background: linear-gradient(90deg, #8b7040, #c8a96e, #d4a855);
-            border-radius: 1px;
+            background: linear-gradient(90deg, #8B6914, #DAA520, #E8C36A);
+            border-radius: 2px;
             transition: width 0.8s cubic-bezier(0.22,1,0.36,1);
         }
 
-        /* ── Question Transition ── */
+        /* ═══ Question Transition ═══ */
         .q-card {
             opacity: 0; transform: translateY(25px);
             transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22,1,0.36,1);
@@ -208,7 +282,7 @@
         .q-card.show { opacity: 1; transform: translateY(0); }
         .q-card.exit { opacity: 0; transform: translateY(-25px); }
 
-        /* ── Shake Animation ── */
+        /* ═══ Shake ═══ */
         @keyframes shake {
             0%,100% { transform: translateX(0); }
             20% { transform: translateX(-8px); }
@@ -218,19 +292,19 @@
         }
         .shake { animation: shake 0.5s ease; }
 
-        /* ── Result Page ── */
+        /* ═══ Result Art ═══ */
         .result-art {
             width: 280px; height: 280px;
             border-radius: 50%;
             position: relative;
             margin: 0 auto 2.5rem;
+            box-shadow: 0 20px 60px rgba(184, 134, 11, 0.15);
         }
         .result-art::after {
-            content: ''; position: absolute; inset: -1px;
+            content: ''; position: absolute; inset: -8px;
             border-radius: 50%;
-            border: 1px solid rgba(200,169,110,0.15);
+            border: 1px solid rgba(184, 134, 11, 0.15);
         }
-
         @keyframes resultFade {
             from { opacity: 0; transform: translateY(30px) scale(0.97); }
             to   { opacity: 1; transform: translateY(0) scale(1); }
@@ -242,10 +316,65 @@
         .result-stagger-5 { animation: resultFade 1s ease 1.4s both; }
         .result-stagger-6 { animation: resultFade 0.8s ease 1.7s both; }
 
-        /* ── Modal ── */
+        /* ═══ Floating Pets ═══ */
+        .pet-decor {
+            position: fixed;
+            pointer-events: none;
+            z-index: 2;
+            opacity: 0.07;
+            animation: petFloat 6s ease-in-out infinite;
+        }
+        .pet-decor svg { width: 100%; height: 100%; }
+        @keyframes petFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(1.5deg); }
+        }
+        .pet-d1 { animation-duration: 7s; animation-delay: 0s; }
+        .pet-d2 { animation-duration: 9s; animation-delay: 1.2s; }
+        .pet-d3 { animation-duration: 8s; animation-delay: 0.5s; }
+        .pet-d4 { animation-duration: 10s; animation-delay: 2s; }
+
+        /* ═══ Floating Hearts ═══ */
+        .float-heart {
+            position: fixed;
+            pointer-events: none;
+            z-index: 15000;
+            font-style: normal;
+            animation: heartRise 1.4s ease-out forwards;
+        }
+        @keyframes heartRise {
+            0%   { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
+            50%  { opacity: 0.8; }
+            100% { opacity: 0; transform: translateY(-120px) scale(0.4) rotate(25deg); }
+        }
+
+        /* ═══ Welcome Toast ═══ */
+        .welcome-toast {
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%) scale(0.92);
+            z-index: 16000;
+            background: rgba(255,252,245,0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 2.5rem 3.5rem;
+            border-radius: 4px;
+            border: 1px solid rgba(184,134,11,0.2);
+            box-shadow: 0 25px 60px rgba(184,134,11,0.12);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.6s cubic-bezier(0.22,1,0.36,1);
+            text-align: center;
+        }
+        .welcome-toast.show {
+            opacity: 1; visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        /* ═══ Modal ═══ */
         .modal-overlay {
             position: fixed; inset: 0; z-index: 20000;
-            background: rgba(10,8,5,0.85);
+            background: rgba(247, 234, 211, 0.88);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             display: flex; align-items: center; justify-content: center;
@@ -254,19 +383,20 @@
         }
         .modal-overlay.show { opacity: 1; visibility: visible; }
         .modal-card {
-            background: linear-gradient(160deg, #2a2218, #1a1510);
-            border: 1px solid rgba(200,169,110,0.15);
-            padding: 2.5rem; border-radius: 12px;
+            background: #fffdf8;
+            border: 1px solid rgba(184,134,11,0.15);
+            padding: 3rem; border-radius: 4px;
             max-width: 380px; width: 90%;
             text-align: center;
             transform: translateY(30px) scale(0.95);
             transition: transform 0.5s cubic-bezier(0.22,1,0.36,1);
+            box-shadow: 0 20px 50px rgba(184,134,11,0.1);
         }
         .modal-overlay.show .modal-card {
             transform: translateY(0) scale(1);
         }
 
-        /* ── Loading Screen ── */
+        /* ═══ Loading ═══ */
         @keyframes pulse {
             0%, 100% { opacity: 0.4; }
             50% { opacity: 1; }
@@ -275,15 +405,16 @@
         .loading-dot:nth-child(2) { animation-delay: 0.3s; }
         .loading-dot:nth-child(3) { animation-delay: 0.6s; }
 
-        /* ── Scrollbar ── */
+        /* ═══ Scrollbar ═══ */
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: rgba(200,169,110,0.2); border-radius: 2px; }
+        ::-webkit-scrollbar-thumb { background: rgba(184,134,11,0.2); border-radius: 2px; }
 
-        /* ── Responsive ── */
+        /* ═══ Responsive ═══ */
         @media (max-width: 640px) {
-            .option-btn { padding: 0.9rem 1.2rem; font-size: 0.88rem; }
-            .result-art { width: 200px; height: 200px; }
+            .option-btn { padding: 1rem 1.2rem; font-size: 0.9rem; }
+            .result-art { width: 220px; height: 220px; }
+            .welcome-toast { padding: 2rem 2rem; }
         }
     </style>
 </head>
@@ -294,29 +425,83 @@
     <!-- Vignette -->
     <div class="vignette"></div>
 
+    <!-- ═══ Cute Pets ═══ -->
+    <!-- Cat (top-left) -->
+    <div class="pet-decor pet-d1" style="width:100px; height:100px; top:8%; left:4%;">
+        <svg viewBox="0 0 100 100" fill="#9e7c2e">
+            <path d="M25,78 L25,45 L14,18 L36,36 L50,30 L64,36 L86,18 L75,45 L75,78 Q75,92 50,92 Q25,92 25,78Z"/>
+            <circle cx="38" cy="56" r="5" opacity="0.4"/>
+            <circle cx="62" cy="56" r="5" opacity="0.4"/>
+            <ellipse cx="50" cy="66" rx="4" ry="2.5" opacity="0.3"/>
+            <path d="M42,70 Q50,78 58,70" fill="none" stroke="#9e7c2e" stroke-width="2" opacity="0.25"/>
+        </svg>
+    </div>
+    <!-- Bunny (bottom-right) -->
+    <div class="pet-decor pet-d2" style="width:110px; height:110px; bottom:8%; right:4%;">
+        <svg viewBox="0 0 100 100" fill="#9e7c2e">
+            <ellipse cx="36" cy="22" rx="9" ry="24" rx="9" ry="24" opacity="0.8"/>
+            <ellipse cx="64" cy="22" rx="9" ry="24" opacity="0.8"/>
+            <ellipse cx="36" cy="14" rx="5" ry="18" fill="#f7ead3" opacity="0.3"/>
+            <ellipse cx="64" cy="14" rx="5" ry="18" fill="#f7ead3" opacity="0.3"/>
+            <ellipse cx="50" cy="62" rx="28" ry="30"/>
+            <circle cx="40" cy="56" r="4" opacity="0.4"/>
+            <circle cx="60" cy="56" r="4" opacity="0.4"/>
+            <ellipse cx="50" cy="64" rx="3.5" ry="2.5" opacity="0.3"/>
+        </svg>
+    </div>
+    <!-- Puppy (top-right) -->
+    <div class="pet-decor pet-d3" style="width:80px; height:80px; top:12%; right:8%;">
+        <svg viewBox="0 0 100 100" fill="#9e7c2e">
+            <ellipse cx="20" cy="38" rx="16" ry="24" transform="rotate(-15 20 38)" opacity="0.7"/>
+            <ellipse cx="80" cy="38" rx="16" ry="24" transform="rotate(15 80 38)" opacity="0.7"/>
+            <circle cx="50" cy="56" r="30"/>
+            <circle cx="38" cy="50" r="5" opacity="0.4"/>
+            <circle cx="62" cy="50" r="5" opacity="0.4"/>
+            <ellipse cx="50" cy="62" rx="7" ry="5" opacity="0.35"/>
+            <path d="M44,68 Q50,74 56,68" fill="none" stroke="#9e7c2e" stroke-width="2" opacity="0.25"/>
+        </svg>
+    </div>
+    <!-- Paw (bottom-left) -->
+    <div class="pet-decor pet-d4" style="width:70px; height:70px; bottom:12%; left:8%;">
+        <svg viewBox="0 0 100 100" fill="#9e7c2e">
+            <ellipse cx="50" cy="66" rx="24" ry="20"/>
+            <circle cx="26" cy="40" r="11"/>
+            <circle cx="42" cy="28" r="11"/>
+            <circle cx="60" cy="28" r="11"/>
+            <circle cx="76" cy="40" r="11"/>
+        </svg>
+    </div>
+
+    <!-- ═══ Welcome Toast ═══ -->
+    <div id="welcomeToast" class="welcome-toast">
+        <p class="font-serif-cn text-xl sm:text-2xl gold-text font-semibold" style="line-height:1.8;">
+            让我们一起开始<br>心灵的旅途吧 ✦
+        </p>
+    </div>
+
     <!-- ═══════════ HOME PAGE ═══════════ -->
     <div id="page-home" class="page active">
-        <div class="w-full max-w-xl mx-auto text-center">
+        <div class="w-full max-w-xl mx-auto text-center relative z-10">
             <!-- Year -->
-            <p class="anim-1 font-display text-warm-400 tracking-[0.35em] text-sm mb-8 opacity-60">— 2 0 2 6 —</p>
+            <p class="anim-1 font-display tracking-[0.4em] text-sm mb-10 font-semibold gold-text-slow">— 2 0 2 6 —</p>
             <!-- Title -->
-            <h1 class="anim-2 font-display text-4xl sm:text-5xl md:text-6xl leading-tight tracking-wide text-warm-100">
-                Find Your<br><em class="italic text-warm-400">Inner Compass</em>
+            <h1 class="anim-2 font-display text-5xl sm:text-6xl md:text-7xl leading-[1.1] tracking-wide text-warm-900 drop-shadow-sm">
+                Find Your<br><em class="italic font-normal gold-text" style="font-size:inherit;">Inner Compass</em>
             </h1>
             <!-- Deco Line -->
-            <div class="flex justify-center my-8"><div class="anim-line deco-line"></div></div>
+            <div class="flex justify-center my-10"><div class="anim-line deco-line"></div></div>
             <!-- Subtitle -->
-            <p class="anim-3 font-serif-cn text-warm-300 text-base sm:text-lg leading-relaxed max-w-md mx-auto" style="line-height:2;">
+            <p class="anim-3 font-serif-cn text-warm-700 text-base sm:text-lg leading-loose max-w-md mx-auto font-medium">
                 在这个碎片化的时代，并非每一种测评都能触及你的灵魂。<br>
-                我们将通过 <span class="text-warm-400">15 个维度</span>，为你匹配最契合你思维底层的探索体系。
+                我们将通过 <span class="gold-text font-bold">15 个维度</span>，为你匹配最契合你思维底层的探索体系。
             </p>
             <!-- Name Input -->
-            <div class="anim-5 mt-10 max-w-xs mx-auto">
-                <label class="block text-warm-500 text-xs tracking-[0.2em] uppercase mb-3 font-sans">你的称呼</label>
+            <div class="anim-5 mt-12 max-w-xs mx-auto">
+                <label class="block text-xs tracking-[0.25em] uppercase mb-4 font-sans font-bold gold-text-slow">你的称呼</label>
                 <input id="nameInput" type="text" placeholder="请输入你的名字" class="input-warm" maxlength="20" autocomplete="off">
             </div>
             <!-- Start Button -->
-            <div class="anim-6 mt-10">
+            <div class="anim-6 mt-12">
                 <button id="btnStart" class="btn-warm" onclick="goToCodePage()">开 启 旅 程</button>
             </div>
         </div>
@@ -324,16 +509,16 @@
 
     <!-- ═══════════ CODE PAGE ═══════════ -->
     <div id="page-code" class="page">
-        <div class="w-full max-w-md mx-auto text-center">
-            <div class="font-display text-warm-500 tracking-[0.3em] text-xs mb-6 uppercase">Verification</div>
-            <h2 class="font-serif-cn text-2xl sm:text-3xl text-warm-100 mb-4">输入兑换码</h2>
-            <p class="font-sans text-warm-400 text-sm mb-8 opacity-70">请输入您的专属兑换码以解锁测评</p>
+        <div class="w-full max-w-md mx-auto text-center relative z-10">
+            <div class="font-display tracking-[0.3em] text-xs mb-6 uppercase font-bold gold-text-slow">Verification</div>
+            <h2 class="font-serif-cn text-3xl sm:text-4xl text-warm-900 mb-4">输入兑换码</h2>
+            <p class="font-sans text-warm-600 text-sm mb-10 opacity-80">请输入您的专属兑换码以解锁测评</p>
             <div class="max-w-xs mx-auto">
                 <input id="codeInput" type="text" placeholder="请输入兑换码" class="input-warm" autocomplete="off"
                     onkeydown="if(event.key==='Enter')verifyCode()">
-                <p id="codeError" class="text-sm mt-3 opacity-0 transition-opacity duration-300" style="color:#c87a6e;">兑换码不正确，请重新输入</p>
+                <p id="codeError" class="text-sm mt-3 opacity-0 transition-opacity duration-300 font-medium" style="color:#c85a5a;">兑换码不正确，请重新输入</p>
             </div>
-            <div class="mt-8">
+            <div class="mt-10">
                 <button class="btn-warm" onclick="verifyCode()">验 证</button>
             </div>
         </div>
@@ -341,75 +526,75 @@
 
     <!-- ═══════════ QUIZ PAGE ═══════════ -->
     <div id="page-quiz" class="page">
-        <div class="w-full max-w-2xl mx-auto">
+        <div class="w-full max-w-2xl mx-auto relative z-10">
             <!-- Header -->
-            <div class="flex justify-between items-center mb-6">
-                <span id="quizUserName" class="font-serif-cn text-warm-500 text-sm tracking-wider"></span>
-                <span id="quizCategory" class="font-sans text-warm-600 text-xs tracking-[0.2em] uppercase"></span>
+            <div class="flex justify-between items-center mb-8">
+                <span id="quizUserName" class="font-serif-cn text-xl sm:text-2xl tracking-wider font-bold gold-text"></span>
+                <span id="quizCategory" class="font-sans text-warm-500 text-xs tracking-[0.2em] uppercase font-bold"></span>
             </div>
             <!-- Question Number -->
-            <div class="flex items-baseline gap-3 mb-2">
-                <span id="qNum" class="font-display text-5xl sm:text-6xl text-warm-400 opacity-30">01</span>
-                <span class="font-sans text-warm-600 text-sm">/ 15</span>
+            <div class="flex items-baseline gap-3 mb-3">
+                <span id="qNum" class="font-display text-5xl sm:text-6xl gold-text-slow opacity-70">01</span>
+                <span class="font-sans text-warm-500 text-sm font-medium">/ 15</span>
             </div>
-            <div class="deco-line w-full mb-8 opacity-40"></div>
+            <div class="deco-line w-full mb-10 opacity-40"></div>
             <!-- Question Card -->
             <div id="questionCard" class="q-card">
-                <h3 id="qText" class="font-serif-cn text-xl sm:text-2xl text-warm-100 leading-relaxed mb-8" style="line-height:1.9;"></h3>
-                <div id="qOptions" class="space-y-3"></div>
+                <h3 id="qText" class="font-serif-cn text-xl sm:text-2xl text-warm-900 leading-relaxed mb-10 font-medium" style="line-height:1.8;"></h3>
+                <div id="qOptions" class="space-y-4"></div>
             </div>
             <!-- Progress -->
-            <div class="mt-10 flex flex-col items-center">
+            <div class="mt-12 flex flex-col items-center">
                 <div class="progress-track">
                     <div id="progressFill" class="progress-fill"></div>
                 </div>
-                <span id="progressText" class="font-sans text-warm-600 text-xs mt-3 tracking-wider"></span>
+                <span id="progressText" class="font-sans text-warm-500 text-xs mt-3 tracking-wider font-medium"></span>
             </div>
         </div>
     </div>
 
     <!-- ═══════════ LOADING PAGE ═══════════ -->
     <div id="page-loading" class="page">
-        <div class="text-center">
-            <p id="loadingName" class="font-serif-cn text-xl sm:text-2xl text-warm-200 mb-6"></p>
-            <div class="flex justify-center gap-2">
-                <span class="loading-dot w-1.5 h-1.5 rounded-full bg-warm-400 inline-block"></span>
-                <span class="loading-dot w-1.5 h-1.5 rounded-full bg-warm-400 inline-block"></span>
-                <span class="loading-dot w-1.5 h-1.5 rounded-full bg-warm-400 inline-block"></span>
+        <div class="text-center relative z-10">
+            <p id="loadingName" class="font-serif-cn text-xl sm:text-2xl gold-text font-semibold mb-8"></p>
+            <div class="flex justify-center gap-3">
+                <span class="loading-dot w-2 h-2 rounded-full inline-block" style="background:#B8860B;"></span>
+                <span class="loading-dot w-2 h-2 rounded-full inline-block" style="background:#DAA520;"></span>
+                <span class="loading-dot w-2 h-2 rounded-full inline-block" style="background:#B8860B;"></span>
             </div>
         </div>
     </div>
 
     <!-- ═══════════ RESULT PAGE ═══════════ -->
     <div id="page-result" class="page" style="align-items:flex-start;">
-        <div class="w-full max-w-2xl mx-auto py-12 sm:py-16">
+        <div class="w-full max-w-2xl mx-auto py-12 sm:py-16 relative z-10">
             <!-- Magazine Header -->
-            <div class="result-stagger-1 flex justify-between items-center mb-10">
-                <span class="font-display text-warm-600 text-xs tracking-[0.3em] uppercase">Inner Compass</span>
-                <span class="font-display text-warm-600 text-xs tracking-[0.3em]">Vol. I · 2026</span>
+            <div class="result-stagger-1 flex justify-between items-center mb-12 border-b pb-4" style="border-color:rgba(184,134,11,0.15);">
+                <span class="font-display text-warm-800 text-xs tracking-[0.3em] uppercase font-bold">Inner Compass</span>
+                <span class="font-display text-xs tracking-[0.3em] font-medium gold-text-slow">Vol. I · 2026</span>
             </div>
             <!-- Art -->
             <div class="result-stagger-2">
                 <div id="resultArt" class="result-art"></div>
             </div>
             <!-- Category Label -->
-            <div class="result-stagger-3 text-center mb-2">
-                <span id="resultLabel" class="font-sans text-warm-500 text-xs tracking-[0.25em] uppercase"></span>
+            <div class="result-stagger-3 text-center mb-3">
+                <span id="resultLabel" class="font-sans text-xs tracking-[0.3em] uppercase font-bold gold-text-slow"></span>
             </div>
             <!-- Result Title -->
-            <h2 id="resultTitle" class="result-stagger-3 font-display text-3xl sm:text-4xl md:text-5xl text-center text-warm-100 mb-3 tracking-wide"></h2>
-            <p id="resultSubtitle" class="result-stagger-3 font-display italic text-warm-400 text-center text-lg mb-8"></p>
+            <h2 id="resultTitle" class="result-stagger-3 font-display text-4xl sm:text-5xl md:text-6xl text-center text-warm-900 mb-4 tracking-wide font-medium"></h2>
+            <p id="resultSubtitle" class="result-stagger-3 font-display italic text-center text-xl mb-10 font-light gold-text"></p>
             <!-- Deco Line -->
-            <div class="result-stagger-4 flex justify-center mb-8"><div class="deco-line" style="width:60px;"></div></div>
+            <div class="result-stagger-4 flex justify-center mb-10"><div class="deco-line" style="width:60px;"></div></div>
             <!-- Description -->
-            <div id="resultDesc" class="result-stagger-4 font-serif-cn text-warm-200 text-base leading-loose max-w-lg mx-auto text-center" style="line-height:2.1;"></div>
+            <div id="resultDesc" class="result-stagger-4 font-serif-cn text-warm-800 text-base sm:text-lg leading-loose max-w-lg mx-auto text-center" style="line-height:2.2;"></div>
             <!-- Deco Line -->
-            <div class="result-stagger-5 flex justify-center my-10"><div class="deco-line" style="width:40px;"></div></div>
+            <div class="result-stagger-5 flex justify-center my-12"><div class="deco-line" style="width:40px;"></div></div>
             <!-- Footer -->
-            <div class="result-stagger-6 text-center space-y-4">
+            <div class="result-stagger-6 text-center space-y-6">
                 <button class="btn-warm" onclick="showContact()">联 系 我</button>
                 <div>
-                    <button class="font-sans text-warm-600 text-xs tracking-wider hover:text-warm-400 transition-colors bg-transparent border-none cursor-pointer mt-4" onclick="restart()">重新探索 ↺</button>
+                    <button class="font-sans text-xs tracking-wider hover:text-warm-700 transition-colors bg-transparent border-none cursor-pointer mt-4 font-bold gold-text-slow" onclick="restart()">重新探索 ↺</button>
                 </div>
             </div>
         </div>
@@ -418,14 +603,14 @@
     <!-- ═══════════ CONTACT MODAL ═══════════ -->
     <div id="contactModal" class="modal-overlay" onclick="hideContact(event)">
         <div class="modal-card" onclick="event.stopPropagation()">
-            <p class="font-display text-warm-500 text-xs tracking-[0.25em] uppercase mb-4">Contact Me</p>
-            <div class="deco-line w-10 mx-auto mb-6 opacity-50"></div>
-            <p class="font-serif-cn text-warm-200 text-sm mb-5">扫描下方二维码添加我的微信</p>
-            <div class="bg-warm-50 rounded-lg p-3 inline-block mb-5">
-                <img src="新建文件夹/80aff6399ae1c0e9d222e7db56bf6dfb.jpg" alt="微信二维码" class="w-52 h-52 object-contain rounded">
+            <p class="font-display text-xs tracking-[0.25em] uppercase mb-5 font-bold gold-text">Contact Me</p>
+            <div class="deco-line w-12 mx-auto mb-8 opacity-50"></div>
+            <p class="font-serif-cn text-warm-800 text-sm mb-6">扫描下方二维码添加我的微信</p>
+            <div class="rounded p-4 inline-block mb-6 shadow-inner border" style="background:#fefcf5; border-color:rgba(184,134,11,0.1);">
+                <img src="新建文件夹/80aff6399ae1c0e9d222e7db56bf6dfb.jpg" alt="微信二维码" class="w-48 h-48 object-contain mix-blend-multiply">
             </div>
             <div>
-                <button class="font-sans text-warm-500 text-xs tracking-wider hover:text-warm-300 transition-colors bg-transparent border-none cursor-pointer" onclick="hideContact()">关闭</button>
+                <button class="font-sans text-xs tracking-wider hover:text-warm-800 transition-colors bg-transparent border-none cursor-pointer font-bold gold-text-slow" onclick="hideContact()">关闭</button>
             </div>
         </div>
     </div>
@@ -436,159 +621,96 @@
     ═══════════════════════════════════════ */
 
     const questions = [
-        // ── 认知偏好 (1-5) ──
-        {
-            category: '认知偏好',
-            text: '当你试图理解一个人时，你最想知道的是什么？',
-            options: [
-                { text: '他的行为偏好和决策方式', type: 'mbti' },
-                { text: '他在各个特质维度上的独特组合', type: 'bigfive' },
-                { text: '驱动他行为背后的深层动机与恐惧', type: 'enneagram' },
-                { text: '他最突出的天赋和优势领域', type: 'clifton' }
-            ]
-        },
-        {
-            category: '认知偏好',
-            text: '你更倾向于哪种自我认知的方式？',
-            options: [
-                { text: '通过明确的类型分类来定位自己', type: 'mbti' },
-                { text: '通过多维度的评分来精确描述自己', type: 'bigfive' },
-                { text: '通过探索内心的核心欲望来理解自己', type: 'enneagram' },
-                { text: '通过识别并发挥自己的长处来定义自己', type: 'clifton' }
-            ]
-        },
-        {
-            category: '认知偏好',
-            text: '面对一个复杂的人际冲突，你首先会怎么做？',
-            options: [
-                { text: '分析双方的性格类型差异', type: 'mbti' },
-                { text: '考虑各自在情绪稳定性、宜人性等维度上的不同', type: 'bigfive' },
-                { text: '探究各自的核心恐惧如何在此刻被触发', type: 'enneagram' },
-                { text: '思考如何利用各自的优势来化解僵局', type: 'clifton' }
-            ]
-        },
-        {
-            category: '认知偏好',
-            text: '你认为「了解自己」最终应该带来什么？',
-            options: [
-                { text: '对自我偏好的清晰认知与接纳', type: 'mbti' },
-                { text: '对自身特质的客观、科学的认识', type: 'bigfive' },
-                { text: '深刻的精神成长与自我超越', type: 'enneagram' },
-                { text: '实际的绩效提升和职业发展', type: 'clifton' }
-            ]
-        },
-        {
-            category: '认知偏好',
-            text: '在一个理想的团队中，你认为最重要的是……',
-            options: [
-                { text: '了解每个人的类型，实现互补协作', type: 'mbti' },
-                { text: '评估团队在各项人格特质上的分布', type: 'bigfive' },
-                { text: '理解每位成员的核心动机和压力反应', type: 'enneagram' },
-                { text: '识别并合理配置团队中每个人的优势', type: 'clifton' }
-            ]
-        },
-        // ── 探索深度 (6-10) ──
-        {
-            category: '探索深度',
-            text: '如果一本人格心理学书籍的开头是这样的，哪一句最吸引你？',
-            options: [
-                { text: '"世界上有16种根本不同的看待世界的方式。"', type: 'mbti' },
-                { text: '"人格可以被精确地分解为五个独立的维度。"', type: 'bigfive' },
-                { text: '"每个人内心深处都有一个被遗忘的童年渴望。"', type: 'enneagram' },
-                { text: '"投资你的优势，回报率将是无限的。"', type: 'clifton' }
-            ]
-        },
-        {
-            category: '探索深度',
-            text: '你对「人能否被改变」这个问题怎么看？',
-            options: [
-                { text: '核心偏好是天生的，但表达方式可以成熟', type: 'mbti' },
-                { text: '特质在一定范围内是可以变化和发展的', type: 'bigfive' },
-                { text: '人可以通过意识觉醒实现根本性的内在转化', type: 'enneagram' },
-                { text: '与其修补弱点，不如将天赋磨练成优势', type: 'clifton' }
-            ]
-        },
-        {
-            category: '探索深度',
-            text: '你更喜欢哪种关于自我的解读方式？',
-            options: [
-                { text: '简洁的类型标签，如"INFP——调停者"', type: 'mbti' },
-                { text: '详细的数据图表和百分位数报告', type: 'bigfive' },
-                { text: '深入的叙事描写和成长路径指引', type: 'enneagram' },
-                { text: '聚焦实操的才干排名和行动建议', type: 'clifton' }
-            ]
-        },
-        {
-            category: '探索深度',
-            text: '在选择职业方向时，你更看重什么？',
-            options: [
-                { text: '这份工作是否与我的性格类型相契合', type: 'mbti' },
-                { text: '客观评估我的特质是否匹配岗位要求', type: 'bigfive' },
-                { text: '这份工作是否能满足我灵魂深处的渴求', type: 'enneagram' },
-                { text: '这份工作是否能让我每天运用最擅长的事', type: 'clifton' }
-            ]
-        },
-        {
-            category: '探索深度',
-            text: '你如何看待人格测评的「科学性」？',
-            options: [
-                { text: '理论框架清晰、便于实际应用就好', type: 'mbti' },
-                { text: '必须有严谨的学术研究和数据支撑', type: 'bigfive' },
-                { text: '真正的洞见超越了传统科学的范畴', type: 'enneagram' },
-                { text: '能否带来切实的行为改变才是关键', type: 'clifton' }
-            ]
-        },
-        // ── 应用场景 (11-15) ──
-        {
-            category: '应用场景',
-            text: '你最欣赏的人际交往方式是怎样的？',
-            options: [
-                { text: '了解彼此的类型，减少误解和摩擦', type: 'mbti' },
-                { text: '以开放的心态理解每个人的独特特质组合', type: 'bigfive' },
-                { text: '深入彼此的内在世界，建立灵魂层面的链接', type: 'enneagram' },
-                { text: '互相欣赏并借助彼此的优势，共同成就', type: 'clifton' }
-            ]
-        },
-        {
-            category: '应用场景',
-            text: '当你感到迷茫时，你通常会怎么做？',
-            options: [
-                { text: '回到自己的类型定义，寻找方向感', type: 'mbti' },
-                { text: '客观分析自身状态在各维度上的变化', type: 'bigfive' },
-                { text: '向内探索，重新连接自己的核心渴望', type: 'enneagram' },
-                { text: '回顾自己最成功的时刻，重新聚焦优势', type: 'clifton' }
-            ]
-        },
-        {
-            category: '应用场景',
-            text: '下面哪个隐喻最能描述你理想中的「人格地图」？',
-            options: [
-                { text: '一面多棱镜——将白光分成清晰的色彩', type: 'mbti' },
-                { text: '一张精密的雷达图——全面且量化', type: 'bigfive' },
-                { text: '一条螺旋上升的道路——通往内在深处', type: 'enneagram' },
-                { text: '一把瑞士军刀——每一把刀都锋利实用', type: 'clifton' }
-            ]
-        },
-        {
-            category: '应用场景',
-            text: '你对「标签化」自己的态度是怎样的？',
-            options: [
-                { text: '标签是理解自我的便捷工具，我乐于接受', type: 'mbti' },
-                { text: '比起标签，我更信赖精确的数据描述', type: 'bigfive' },
-                { text: '标签太浅了，我追求更深层的自我认知', type: 'enneagram' },
-                { text: '只要这个标签能帮我发挥优势，我不介意', type: 'clifton' }
-            ]
-        },
-        {
-            category: '应用场景',
-            text: '如果你只能选择一种方式来向后辈传达「自我认知」的重要性，你会……',
-            options: [
-                { text: '教他们理解不同的人有不同的偏好和风格', type: 'mbti' },
-                { text: '帮他们用科学的方法客观地认识自己', type: 'bigfive' },
-                { text: '引导他们倾听内心最深处的声音', type: 'enneagram' },
-                { text: '帮他们发现并培养自己独特的天赋', type: 'clifton' }
-            ]
-        }
+        { category: '认知偏好', text: '当你试图理解一个人时，你最想知道的是什么？', options: [
+            { text: '他的行为偏好和决策方式', type: 'mbti' },
+            { text: '他在各个特质维度上的独特组合', type: 'bigfive' },
+            { text: '驱动他行为背后的深层动机与恐惧', type: 'enneagram' },
+            { text: '他最突出的天赋和优势领域', type: 'clifton' }
+        ]},
+        { category: '认知偏好', text: '你更倾向于哪种自我认知的方式？', options: [
+            { text: '通过明确的类型分类来定位自己', type: 'mbti' },
+            { text: '通过多维度的评分来精确描述自己', type: 'bigfive' },
+            { text: '通过探索内心的核心欲望来理解自己', type: 'enneagram' },
+            { text: '通过识别并发挥自己的长处来定义自己', type: 'clifton' }
+        ]},
+        { category: '认知偏好', text: '面对一个复杂的人际冲突，你首先会怎么做？', options: [
+            { text: '分析双方的性格类型差异', type: 'mbti' },
+            { text: '考虑各自在情绪稳定性、宜人性等维度上的不同', type: 'bigfive' },
+            { text: '探究各自的核心恐惧如何在此刻被触发', type: 'enneagram' },
+            { text: '思考如何利用各自的优势来化解僵局', type: 'clifton' }
+        ]},
+        { category: '认知偏好', text: '你认为「了解自己」最终应该带来什么？', options: [
+            { text: '对自我偏好的清晰认知与接纳', type: 'mbti' },
+            { text: '对自身特质的客观、科学的认识', type: 'bigfive' },
+            { text: '深刻的精神成长与自我超越', type: 'enneagram' },
+            { text: '实际的绩效提升和职业发展', type: 'clifton' }
+        ]},
+        { category: '认知偏好', text: '在一个理想的团队中，你认为最重要的是……', options: [
+            { text: '了解每个人的类型，实现互补协作', type: 'mbti' },
+            { text: '评估团队在各项人格特质上的分布', type: 'bigfive' },
+            { text: '理解每位成员的核心动机和压力反应', type: 'enneagram' },
+            { text: '识别并合理配置团队中每个人的优势', type: 'clifton' }
+        ]},
+        { category: '探索深度', text: '如果一本人格心理学书籍的开头是这样的，哪一句最吸引你？', options: [
+            { text: '"世界上有16种根本不同的看待世界的方式。"', type: 'mbti' },
+            { text: '"人格可以被精确地分解为五个独立的维度。"', type: 'bigfive' },
+            { text: '"每个人内心深处都有一个被遗忘的童年渴望。"', type: 'enneagram' },
+            { text: '"投资你的优势，回报率将是无限的。"', type: 'clifton' }
+        ]},
+        { category: '探索深度', text: '你对「人能否被改变」这个问题怎么看？', options: [
+            { text: '核心偏好是天生的，但表达方式可以成熟', type: 'mbti' },
+            { text: '特质在一定范围内是可以变化和发展的', type: 'bigfive' },
+            { text: '人可以通过意识觉醒实现根本性的内在转化', type: 'enneagram' },
+            { text: '与其修补弱点，不如将天赋磨练成优势', type: 'clifton' }
+        ]},
+        { category: '探索深度', text: '你更喜欢哪种关于自我的解读方式？', options: [
+            { text: '简洁的类型标签，如"INFP——调停者"', type: 'mbti' },
+            { text: '详细的数据图表和百分位数报告', type: 'bigfive' },
+            { text: '深入的叙事描写和成长路径指引', type: 'enneagram' },
+            { text: '聚焦实操的才干排名和行动建议', type: 'clifton' }
+        ]},
+        { category: '探索深度', text: '在选择职业方向时，你更看重什么？', options: [
+            { text: '这份工作是否与我的性格类型相契合', type: 'mbti' },
+            { text: '客观评估我的特质是否匹配岗位要求', type: 'bigfive' },
+            { text: '这份工作是否能满足我灵魂深处的渴求', type: 'enneagram' },
+            { text: '这份工作是否能让我每天运用最擅长的事', type: 'clifton' }
+        ]},
+        { category: '探索深度', text: '你如何看待人格测评的「科学性」？', options: [
+            { text: '理论框架清晰、便于实际应用就好', type: 'mbti' },
+            { text: '必须有严谨的学术研究和数据支撑', type: 'bigfive' },
+            { text: '真正的洞见超越了传统科学的范畴', type: 'enneagram' },
+            { text: '能否带来切实的行为改变才是关键', type: 'clifton' }
+        ]},
+        { category: '应用场景', text: '你最欣赏的人际交往方式是怎样的？', options: [
+            { text: '了解彼此的类型，减少误解和摩擦', type: 'mbti' },
+            { text: '以开放的心态理解每个人的独特特质组合', type: 'bigfive' },
+            { text: '深入彼此的内在世界，建立灵魂层面的链接', type: 'enneagram' },
+            { text: '互相欣赏并借助彼此的优势，共同成就', type: 'clifton' }
+        ]},
+        { category: '应用场景', text: '当你感到迷茫时，你通常会怎么做？', options: [
+            { text: '回到自己的类型定义，寻找方向感', type: 'mbti' },
+            { text: '客观分析自身状态在各维度上的变化', type: 'bigfive' },
+            { text: '向内探索，重新连接自己的核心渴望', type: 'enneagram' },
+            { text: '回顾自己最成功的时刻，重新聚焦优势', type: 'clifton' }
+        ]},
+        { category: '应用场景', text: '下面哪个隐喻最能描述你理想中的「人格地图」？', options: [
+            { text: '一面多棱镜——将白光分成清晰的色彩', type: 'mbti' },
+            { text: '一张精密的雷达图——全面且量化', type: 'bigfive' },
+            { text: '一条螺旋上升的道路——通往内在深处', type: 'enneagram' },
+            { text: '一把瑞士军刀——每一把刀都锋利实用', type: 'clifton' }
+        ]},
+        { category: '应用场景', text: '你对「标签化」自己的态度是怎样的？', options: [
+            { text: '标签是理解自我的便捷工具，我乐于接受', type: 'mbti' },
+            { text: '比起标签，我更信赖精确的数据描述', type: 'bigfive' },
+            { text: '标签太浅了，我追求更深层的自我认知', type: 'enneagram' },
+            { text: '只要这个标签能帮我发挥优势，我不介意', type: 'clifton' }
+        ]},
+        { category: '应用场景', text: '如果你只能选择一种方式来向后辈传达「自我认知」的重要性，你会……', options: [
+            { text: '教他们理解不同的人有不同的偏好和风格', type: 'mbti' },
+            { text: '帮他们用科学的方法客观地认识自己', type: 'bigfive' },
+            { text: '引导他们倾听内心最深处的声音', type: 'enneagram' },
+            { text: '帮他们发现并培养自己独特的天赋', type: 'clifton' }
+        ]}
     ];
 
     const results = {
@@ -597,7 +719,7 @@
             title: 'MBTI',
             titleCN: '迈尔斯-布里格斯类型指标',
             subtitle: 'The Cognitive Prism',
-            art: 'radial-gradient(circle at 30% 40%, rgba(212,168,85,0.4), transparent 50%), radial-gradient(circle at 70% 60%, rgba(200,120,80,0.3), transparent 50%), radial-gradient(circle at 50% 30%, rgba(180,140,100,0.25), transparent 60%), linear-gradient(135deg, #2a2015 0%, #1a1510 100%)',
+            art: 'radial-gradient(circle at 30% 40%, rgba(218,165,32,0.5), transparent 50%), radial-gradient(circle at 70% 60%, rgba(200,150,60,0.4), transparent 50%), radial-gradient(circle at 50% 30%, rgba(232,195,106,0.3), transparent 60%), linear-gradient(135deg, #fdf8ed 0%, #f0dfca 100%)',
             getDesc: (name) => `亲爱的 ${name}，\n\n你拥有一种清晰而敏锐的认知方式。你天然地倾向于通过类型化的框架来理解这个纷繁复杂的世界——你相信，人与人之间存在着根本性的认知差异，而理解这些差异是一切沟通与协作的基石。\n\nMBTI（迈尔斯-布里格斯类型指标）将为你提供一面精准的认知棱镜。它基于荣格的心理类型理论，通过四个核心维度——外向与内向、感觉与直觉、思维与情感、判断与知觉——为你勾勒出属于你的十六型人格画像。\n\n在这个体系中，你不仅会找到对自我偏好的清晰定义，更会获得一把理解他人的钥匙。每一种类型都有其独特的光芒与盲区，而真正的智慧在于——看见差异、尊重差异、善用差异。\n\n这不仅是一次测评，更是一次与自我对话的邀请。`
         },
         bigfive: {
@@ -605,7 +727,7 @@
             title: 'Big Five',
             titleCN: '大五人格模型',
             subtitle: 'The Precision Map',
-            art: 'conic-gradient(from 0deg at 50% 50%, rgba(180,140,100,0.3) 0deg, transparent 72deg, rgba(200,169,110,0.2) 144deg, transparent 216deg, rgba(160,120,80,0.25) 288deg, transparent 360deg), radial-gradient(circle at 50% 50%, rgba(200,169,110,0.15) 30%, transparent 70%), linear-gradient(160deg, #221c15 0%, #181410 100%)',
+            art: 'conic-gradient(from 0deg at 50% 50%, rgba(184,134,11,0.35) 0deg, transparent 72deg, rgba(218,165,32,0.25) 144deg, transparent 216deg, rgba(197,151,61,0.3) 288deg, transparent 360deg), radial-gradient(circle at 50% 50%, rgba(218,165,32,0.15) 30%, transparent 70%), linear-gradient(160deg, #fefcf8 0%, #f0dfca 100%)',
             getDesc: (name) => `亲爱的 ${name}，\n\n你是一个追求精确与客观的人。你不满足于简单的标签或笼统的分类——你渴望的是一张关于自我的高清地图，每一处地形都经得起反复测量与验证。\n\n大五人格模型（OCEAN）是当今心理学界最受学术认可的人格理论。它不会给你一个简单的类型标签，而是通过五个独立的特质维度——开放性、尽责性、外向性、宜人性、神经质——为你绘制一幅精密的人格雷达图。\n\n你的每一个特质都落在一条连续的光谱上，这意味着你的人格画像是独一无二的、无法被简化的。对于你这样重视科学严谨性和数据驱动的思考者而言，大五模型将是你最可信赖的自我认知工具。\n\n接受它的邀请，用数据之光照亮你内在的每一个角落。`
         },
         enneagram: {
@@ -613,7 +735,7 @@
             title: 'Enneagram',
             titleCN: '九型人格',
             subtitle: 'The Inner Spiral',
-            art: 'conic-gradient(from 45deg at 50% 50%, rgba(180,110,90,0.3), rgba(200,169,110,0.2), rgba(160,130,100,0.25), rgba(180,110,90,0.3)), radial-gradient(circle at 50% 50%, transparent 25%, rgba(200,169,110,0.08) 26%, transparent 27%), radial-gradient(circle at 50% 50%, transparent 45%, rgba(200,169,110,0.06) 46%, transparent 47%), linear-gradient(145deg, #231a15 0%, #15100c 100%)',
+            art: 'conic-gradient(from 45deg at 50% 50%, rgba(197,151,61,0.35), rgba(218,165,32,0.25), rgba(184,134,11,0.3), rgba(197,151,61,0.35)), radial-gradient(circle at 50% 50%, transparent 25%, rgba(218,165,32,0.08) 26%, transparent 27%), linear-gradient(145deg, #fdf8ed 0%, #f0dfca 100%)',
             getDesc: (name) => `亲爱的 ${name}，\n\n你是一个灵魂的深潜者。对你而言，自我认知不是一张浅层的标签，不是一组冰冷的数据，而是一场通往内心最深处的旅程。你想知道的不仅仅是「我是什么样的人」，更是「我为什么会成为这样的人」。\n\n九型人格（Enneagram）将与你的这份渴望深深共鸣。它是一个古老而深邃的智慧体系，不停留于行为表象，而是直指你内心最核心的动机、最深层的恐惧、以及最本真的渴望。\n\n在九型人格的地图上，每一种类型都有其独特的成长路径——从执念到自由，从恐惧到觉醒。它不仅告诉你「你是谁」，更为你指明「你可以成为谁」。这条螺旋上升的道路，正是你灵魂一直在寻找的。\n\n准备好了吗？让九型人格带你回到内心的原点。`
         },
         clifton: {
@@ -621,7 +743,7 @@
             title: 'CliftonStrengths',
             titleCN: '克利夫顿优势识别',
             subtitle: 'The Strength Compass',
-            art: 'linear-gradient(135deg, rgba(200,160,80,0.35) 0%, transparent 40%), linear-gradient(225deg, rgba(180,120,60,0.25) 0%, transparent 35%), linear-gradient(45deg, rgba(160,130,90,0.2) 0%, transparent 50%), linear-gradient(315deg, rgba(200,169,110,0.15) 0%, transparent 45%), linear-gradient(160deg, #261e15 0%, #14100c 100%)',
+            art: 'linear-gradient(135deg, rgba(218,165,32,0.4) 0%, transparent 40%), linear-gradient(225deg, rgba(184,134,11,0.3) 0%, transparent 35%), linear-gradient(45deg, rgba(197,151,61,0.25) 0%, transparent 50%), linear-gradient(160deg, #fefcf8 0%, #f0dfca 100%)',
             getDesc: (name) => `亲爱的 ${name}，\n\n你是一个天生的行动派。你相信，认识自我的终极目的不是分析，不是标记，而是行动——是将你的天赋磨练成真实的、可以改变世界的优势。\n\n盖洛普的克利夫顿优势识别（CliftonStrengths）将与你的这份信念完美共振。它基于数十年、数百万人的研究，识别出34个才干主题。你的前5大优势主题将为你揭示：你天生擅长什么、什么样的工作让你充满能量、以及如何有策略地投资你的长处以获得最大的回报。\n\n这个体系不会让你纠结于弱点的修补，而是帮你将目光聚焦于最有力量的地方。对于你这样注重实效、追求卓越的人而言，它不仅是一个测评工具，更是一份个人发展的战略蓝图。\n\n你的优势就是你的指南针。现在，让我们一起找到它。`
         }
     };
@@ -630,7 +752,6 @@
     /* ═══════════════════════════════════════
        STATE
     ═══════════════════════════════════════ */
-
     let userName = '';
     let currentQ = 0;
     let scores = { mbti: 0, bigfive: 0, enneagram: 0, clifton: 0 };
@@ -640,7 +761,6 @@
     /* ═══════════════════════════════════════
        INIT
     ═══════════════════════════════════════ */
-
     document.addEventListener('DOMContentLoaded', () => {
         initGrain();
         document.getElementById('nameInput').focus();
@@ -650,22 +770,66 @@
         const c = document.createElement('canvas');
         const size = 150;
         c.width = c.height = size;
-        const ctx = c.getContext('2d');
-        const img = ctx.createImageData(size, size);
+        const cx = c.getContext('2d');
+        const img = cx.createImageData(size, size);
         for (let i = 0; i < img.data.length; i += 4) {
-            const v = Math.random() * 200 + 30;
+            const v = Math.random() * 100 + 120;
             img.data[i] = v; img.data[i+1] = v; img.data[i+2] = v;
-            img.data[i+3] = 10;
+            img.data[i+3] = 16;
         }
-        ctx.putImageData(img, 0, 0);
+        cx.putImageData(img, 0, 0);
         document.getElementById('grain').style.backgroundImage = `url(${c.toDataURL()})`;
+    }
+
+
+    /* ═══════════════════════════════════════
+       HEARTS — Click Interaction
+    ═══════════════════════════════════════ */
+    function spawnHearts(x, y) {
+        const colors = [
+            'rgba(255,140,160,0.9)',
+            'rgba(255,170,185,0.85)',
+            'rgba(255,120,150,0.8)',
+            'rgba(255,160,180,0.75)',
+            'rgba(248,130,155,0.85)',
+        ];
+        const count = 6 + Math.floor(Math.random() * 3);
+        for (let i = 0; i < count; i++) {
+            const heart = document.createElement('span');
+            heart.className = 'float-heart';
+            heart.textContent = '♥';
+            const ox = (Math.random() - 0.5) * 50;
+            const sz = Math.random() * 12 + 10;
+            heart.style.cssText = `
+                left: ${x + ox}px;
+                top: ${y - 5}px;
+                font-size: ${sz}px;
+                color: ${colors[Math.floor(Math.random() * colors.length)]};
+                animation-duration: ${1 + Math.random() * 0.8}s;
+                animation-delay: ${Math.random() * 0.15}s;
+            `;
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 2500);
+        }
+    }
+
+
+    /* ═══════════════════════════════════════
+       WELCOME TOAST
+    ═══════════════════════════════════════ */
+    function showWelcomeToast(callback) {
+        const toast = document.getElementById('welcomeToast');
+        toast.classList.add('show');
+        setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(callback, 400);
+        }, 2000);
     }
 
 
     /* ═══════════════════════════════════════
        NAVIGATION
     ═══════════════════════════════════════ */
-
     function showPage(id) {
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
         document.getElementById(id).classList.add('active');
@@ -675,7 +839,7 @@
         const name = document.getElementById('nameInput').value.trim();
         if (!name) {
             const input = document.getElementById('nameInput');
-            input.style.borderColor = '#c87a6e';
+            input.style.borderColor = '#c85a5a';
             input.setAttribute('placeholder', '请先输入你的称呼');
             input.classList.add('shake');
             setTimeout(() => {
@@ -685,8 +849,11 @@
             return;
         }
         userName = name;
-        showPage('page-code');
-        setTimeout(() => document.getElementById('codeInput').focus(), 500);
+        // Show welcome toast first, then go to code page
+        showWelcomeToast(() => {
+            showPage('page-code');
+            setTimeout(() => document.getElementById('codeInput').focus(), 500);
+        });
     }
 
     function verifyCode() {
@@ -708,7 +875,6 @@
     /* ═══════════════════════════════════════
        QUIZ
     ═══════════════════════════════════════ */
-
     function startQuiz() {
         currentQ = 0;
         scores = { mbti: 0, bigfive: 0, enneagram: 0, clifton: 0 };
@@ -719,39 +885,30 @@
     function renderQuestion() {
         const q = questions[currentQ];
         const card = document.getElementById('questionCard');
-
-        // Remove show, add exit
         card.classList.remove('show');
         card.classList.add('exit');
 
         setTimeout(() => {
-            // Update content
             document.getElementById('qNum').textContent = String(currentQ + 1).padStart(2, '0');
             document.getElementById('qText').textContent = q.text;
             document.getElementById('quizCategory').textContent = q.category;
 
-            // Render options
             const optContainer = document.getElementById('qOptions');
             const letters = ['A', 'B', 'C', 'D'];
             optContainer.innerHTML = q.options.map((opt, i) =>
-                `<button class="option-btn" onclick="selectAnswer('${opt.type}', this)" style="opacity:0; transform:translateY(15px); transition: all 0.5s ease ${0.1 + i * 0.08}s;">
-                    <span class="font-display text-warm-500 mr-3 text-sm opacity-60">${letters[i]}.</span>
-                    <span>${opt.text}</span>
+                `<button class="option-btn" onclick="selectAnswer('${opt.type}', this, event)" style="opacity:0; transform:translateY(15px); transition: all 0.5s ease ${0.1 + i * 0.08}s;">
+                    <span class="font-display mr-3 text-sm font-bold opt-letter">${letters[i]}.</span>
+                    <span class="opt-text">${opt.text}</span>
                 </button>`
             ).join('');
 
-            // Update progress
             const pct = ((currentQ) / questions.length) * 100;
             document.getElementById('progressFill').style.width = pct + '%';
             document.getElementById('progressText').textContent = `${currentQ + 1} / ${questions.length}`;
 
-            // Remove exit, prepare for show
             card.classList.remove('exit');
-
-            // Trigger show after a frame
             requestAnimationFrame(() => {
                 card.classList.add('show');
-                // Trigger option animations
                 optContainer.querySelectorAll('.option-btn').forEach(btn => {
                     btn.style.opacity = '1';
                     btn.style.transform = 'translateY(0)';
@@ -760,13 +917,15 @@
         }, currentQ === 0 ? 100 : 450);
     }
 
-    function selectAnswer(type, btn) {
+    function selectAnswer(type, btn, event) {
         if (isTransitioning) return;
         isTransitioning = true;
 
-        // Visual feedback
         btn.classList.add('selected');
         scores[type]++;
+
+        // Spawn hearts at click position
+        spawnHearts(event.clientX, event.clientY);
 
         setTimeout(() => {
             currentQ++;
@@ -774,11 +933,10 @@
                 renderQuestion();
                 setTimeout(() => { isTransitioning = false; }, 500);
             } else {
-                // Complete progress
                 document.getElementById('progressFill').style.width = '100%';
                 setTimeout(() => showLoading(), 400);
             }
-        }, 500);
+        }, 600);
     }
 
     function showLoading() {
@@ -791,7 +949,6 @@
     /* ═══════════════════════════════════════
        RESULT
     ═══════════════════════════════════════ */
-
     function showResult() {
         const winner = Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0];
         const r = results[winner];
@@ -810,7 +967,6 @@
     /* ═══════════════════════════════════════
        CONTACT MODAL
     ═══════════════════════════════════════ */
-
     function showContact() {
         document.getElementById('contactModal').classList.add('show');
     }
@@ -824,14 +980,12 @@
     /* ═══════════════════════════════════════
        RESTART
     ═══════════════════════════════════════ */
-
     function restart() {
         currentQ = 0;
         scores = { mbti: 0, bigfive: 0, enneagram: 0, clifton: 0 };
         document.getElementById('progressFill').style.width = '0%';
         showPage('page-home');
 
-        // Reset home animations
         const home = document.getElementById('page-home');
         const animEls = home.querySelectorAll('[class*="anim-"]');
         animEls.forEach(el => {
@@ -839,7 +993,7 @@
             const animClass = classes.find(c => c.startsWith('anim-'));
             if (animClass) {
                 el.classList.remove(animClass);
-                void el.offsetWidth; // reflow
+                void el.offsetWidth;
                 el.classList.add(animClass);
             }
         });
