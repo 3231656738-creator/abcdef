@@ -1,17 +1,32 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Find Your Inner Compass — 探索你的人格罗盘</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Pinyon+Script&family=Noto+Serif+SC:wght@300;400;500;700&family=ZCOOL+QingKe+HuangYou&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.loli.net">
+    <link rel="preconnect" href="https://gstatic.loli.net" crossorigin>
+    <link rel="preload"
+        href="https://fonts.loli.net/css2?family=Cormorant+Garamond:wght@400;600;700&family=Playfair+Display:wght@400;600;700&family=Noto+Serif+SC:wght@400;700&display=swap"
+        as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link
+            href="https://fonts.loli.net/css2?family=Cormorant+Garamond:wght@400;600;700&family=Playfair+Display:wght@400;600;700&family=Noto+Serif+SC:wght@400;700&display=swap"
+            rel="stylesheet">
+    </noscript>
+    <link rel="preload"
+        href="https://fonts.loli.net/css2?family=Pinyon+Script&family=ZCOOL+QingKe+HuangYou&display=swap" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link href="https://fonts.loli.net/css2?family=Pinyon+Script&family=ZCOOL+QingKe+HuangYou&display=swap"
+            rel="stylesheet">
+    </noscript>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <!-- html2canvas loaded on demand -->
     <!-- ═══ Global Pet Container (Fixed Bottom) ═══ -->
     <div class="pet-container">
-        <!-- Left: Cat (Triangular Ears, Almond Eyes) -->
+        <!-- Left: Cat (Enhanced) -->
         <div class="pet-icon-wrapper pet-left" onclick="petInteract(this, event)">
             <svg class="pet-svg" viewBox="0 0 200 200">
                 <defs>
@@ -21,71 +36,80 @@
                         <stop offset="100%" style="stop-color:#8B4500;stop-opacity:1" />
                     </linearGradient>
                     <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
-                        <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
-                        <feOffset dx="2" dy="4" result="offsetblur"/>
+                        <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+                        <feOffset dx="2" dy="4" result="offsetblur" />
                         <feComponentTransfer>
-                            <feFuncA type="linear" slope="0.3"/>
+                            <feFuncA type="linear" slope="0.3" />
                         </feComponentTransfer>
-                        <feMerge> 
-                            <feMergeNode in="offsetblur"/>
-                            <feMergeNode in="SourceGraphic"/> 
+                        <feMerge>
+                            <feMergeNode in="offsetblur" />
+                            <feMergeNode in="SourceGraphic" />
                         </feMerge>
                     </filter>
                 </defs>
                 <!-- Shadow -->
-                <ellipse cx="100" cy="180" rx="50" ry="8" fill="#000" opacity="0.2"/>
-                <!-- Body -->
-                <path d="M70 170 Q60 170 60 140 Q60 110 80 100 Q100 90 120 100 Q140 110 140 140 Q140 170 130 170 Z" fill="url(#goldGradDeep)" filter="url(#dropShadow)"/>
+                <ellipse cx="100" cy="180" rx="55" ry="10" fill="#000" opacity="0.25" filter="url(#dropShadow)" />
+                <!-- Body with Fur Spikes -->
+                <path d="M70 170 Q50 170 50 140 Q50 110 80 100 Q100 90 120 100 Q150 110 150 140 Q150 170 130 170 Z"
+                    fill="url(#goldGradDeep)" filter="url(#dropShadow)" />
                 <!-- Head -->
                 <g filter="url(#dropShadow)">
                     <!-- Ears -->
-                    <path d="M75 80 L65 40 L95 65 Z" fill="url(#goldGradDeep)"/>
-                    <path d="M125 80 L135 40 L105 65 Z" fill="url(#goldGradDeep)"/>
+                    <path d="M70 85 L60 40 L90 70 Z" fill="url(#goldGradDeep)" />
+                    <path d="M130 85 L140 40 L110 70 Z" fill="url(#goldGradDeep)" />
                     <!-- Face Base -->
-                    <ellipse cx="100" cy="90" rx="35" ry="30" fill="url(#goldGradDeep)"/>
+                    <ellipse cx="100" cy="95" rx="40" ry="35" fill="url(#goldGradDeep)" />
+                    <!-- Cheek Fur -->
+                    <path d="M60 95 L50 90 L60 100 L50 105 L62 110 Z" fill="url(#goldGradDeep)" />
+                    <path d="M140 95 L150 90 L140 100 L150 105 L138 110 Z" fill="url(#goldGradDeep)" />
                 </g>
                 <!-- Face Details -->
                 <g fill="#2E1A47">
                     <!-- Eyes (Almond) -->
-                    <path d="M85 85 Q90 80 95 85 Q90 92 85 85" />
-                    <path d="M105 85 Q110 80 115 85 Q110 92 105 85" />
+                    <path d="M82 90 Q90 85 98 90 Q90 98 82 90" />
+                    <path d="M102 90 Q110 85 118 90 Q110 98 102 90" />
                     <!-- Nose -->
-                    <path d="M100 95 L97 92 L103 92 Z" />
+                    <path d="M100 100 L96 96 L104 96 Z" />
                     <!-- Whiskers -->
-                    <path d="M80 95 L60 90 M80 100 L60 100 M80 105 L60 110" stroke="#2E1A47" stroke-width="1"/>
-                    <path d="M120 95 L140 90 M120 100 L140 100 M120 105 L140 110" stroke="#2E1A47" stroke-width="1"/>
+                    <path d="M75 100 L55 95 M75 105 L55 105 M75 110 L55 115" stroke="#2E1A47" stroke-width="1.5" />
+                    <path d="M125 100 L145 95 M125 105 L145 105 M125 110 L145 115" stroke="#2E1A47"
+                        stroke-width="1.5" />
                 </g>
                 <!-- Tail -->
-                <path d="M130 160 Q150 150 150 120" fill="none" stroke="url(#goldGradDeep)" stroke-width="6" stroke-linecap="round" class="animate-sway"/>
+                <path d="M130 160 Q160 150 150 110" fill="none" stroke="url(#goldGradDeep)" stroke-width="8"
+                    stroke-linecap="round" class="animate-sway" />
             </svg>
         </div>
 
-        <!-- Right: Dog (Droopy Ears, Round Eyes) -->
+        <!-- Right: Dog (Enhanced) -->
         <div class="pet-icon-wrapper pet-right" onclick="petInteract(this, event)">
             <svg class="pet-svg" viewBox="0 0 200 200">
                 <!-- Shadow -->
-                <ellipse cx="100" cy="180" rx="50" ry="8" fill="#000" opacity="0.2"/>
+                <ellipse cx="100" cy="180" rx="55" ry="10" fill="#000" opacity="0.25" />
                 <!-- Body -->
-                <path d="M60 170 Q50 170 50 140 Q50 110 70 100 Q100 90 130 100 Q150 110 150 140 Q150 170 140 170 Z" fill="url(#goldGradDeep)" filter="url(#dropShadow)"/>
+                <path d="M60 170 Q45 170 45 140 Q45 110 70 100 Q100 85 130 100 Q155 110 155 140 Q155 170 140 170 Z"
+                    fill="url(#goldGradDeep)" filter="url(#dropShadow)" />
                 <!-- Head -->
                 <g filter="url(#dropShadow)">
-                    <circle cx="100" cy="85" r="35" fill="url(#goldGradDeep)"/>
+                    <circle cx="100" cy="85" r="38" fill="url(#goldGradDeep)" />
                     <!-- Droopy Ears -->
-                    <path d="M68 75 Q50 75 50 100 Q50 120 65 110 Z" fill="url(#goldGradDeep)"/>
-                    <path d="M132 75 Q150 75 150 100 Q150 120 135 110 Z" fill="url(#goldGradDeep)"/>
+                    <path d="M65 75 Q40 75 40 105 Q40 130 60 115 Z" fill="url(#goldGradDeep)" />
+                    <path d="M135 75 Q160 75 160 105 Q160 130 140 115 Z" fill="url(#goldGradDeep)" />
                 </g>
                 <!-- Face Details -->
                 <g fill="#2E1A47">
                     <!-- Eyes (Round) -->
-                    <circle cx="85" cy="80" r="4" />
-                    <circle cx="115" cy="80" r="4" />
-                    <!-- Nose (Short) -->
-                    <ellipse cx="100" cy="90" rx="6" ry="4" />
+                    <circle cx="85" cy="80" r="5" />
+                    <circle cx="115" cy="80" r="5" />
+                    <!-- Nose -->
+                    <ellipse cx="100" cy="92" rx="8" ry="5" />
                     <!-- Mouth -->
-                    <path d="M100 94 L100 100 M90 98 Q100 105 110 98" fill="none" stroke="#2E1A47" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M100 97 L100 105 M90 102 Q100 110 110 102" fill="none" stroke="#2E1A47" stroke-width="2.5"
+                        stroke-linecap="round" />
                 </g>
                 <!-- Tail -->
-                <path d="M140 150 Q160 140 160 120" fill="none" stroke="url(#goldGradDeep)" stroke-width="6" stroke-linecap="round" class="animate-sway" style="animation-delay: -1s"/>
+                <path d="M140 150 Q170 130 160 100" fill="none" stroke="url(#goldGradDeep)" stroke-width="8"
+                    stroke-linecap="round" class="animate-sway" style="animation-delay: -1s" />
             </svg>
         </div>
     </div>
@@ -105,7 +129,7 @@
                             600: '#9566ba',
                             700: '#7d4ea0',
                             800: '#674083',
-                            900: '#2e1a47', 
+                            900: '#2e1a47',
                             950: '#1a0b2e',
                         },
                         accent: {
@@ -153,9 +177,11 @@
         :root {
             --violet-deep: #2E1A47;
             --violet-mid: #8B5CF6;
-            --gold-primary: #B8860B; /* Deep Quicksand Gold */
+            --gold-primary: #B8860B;
+            /* Deep Quicksand Gold */
             --gold-light: #DAA520;
-            --paper-bg: #F5F0EB; /* Warm Grey Beige */
+            --paper-bg: #F5F0EB;
+            /* Warm Grey Beige */
             --dark-overlay: rgba(20, 20, 25, 0.4);
             --glass-border: rgba(184, 134, 11, 0.2);
             --glass-bg: rgba(46, 26, 71, 0.3);
@@ -163,11 +189,12 @@
 
         /* ═══ Letter Interface ═══ */
         .letter-paper {
-            background-color: #F0E6D2; /* Wood/Parchment color */
+            background-color: #F0E6D2;
+            /* Wood/Parchment color */
             color: #2E1A47;
             /* Wood texture noise */
             background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.12'/%3E%3C/svg%3E");
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3), inset 0 0 60px rgba(139, 92, 246, 0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), inset 0 0 60px rgba(139, 92, 246, 0.05);
             border: 1px solid #E5D1A6;
             position: relative;
             transform-style: preserve-3d;
@@ -178,20 +205,22 @@
             font-family: 'Noto Serif SC', 'Georgia', serif;
             line-height: 1.8;
             /* Deep Flowing Gold (Antique Bronze/Dark Gold) */
-            color: #B8860B; 
+            color: #B8860B;
             /* Slight shadow for readability on wood background */
-            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4); 
-            font-weight: 600; /* Increased weight for readability */
+            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+            font-weight: 600;
+            /* Increased weight for readability */
         }
 
         .title-metal {
             background: linear-gradient(135deg, #B8860B 0%, #DAA520 50%, #8B4500 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             filter: drop-shadow(0 0 3px #B8860B);
             position: relative;
         }
-        
+
         /* ═══ Pet Container & Positioning ═══ */
         .pet-container {
             position: fixed;
@@ -199,11 +228,14 @@
             left: 0;
             width: 100%;
             height: 120px;
-            z-index: 90; /* Below modals (usually 100+), above content */
-            pointer-events: none; /* Allow clicks to pass through empty areas */
-            transition: opacity 0.3s ease; /* Smart display transition */
+            z-index: 90;
+            /* Below modals (usually 100+), above content */
+            pointer-events: none;
+            /* Allow clicks to pass through empty areas */
+            transition: opacity 0.3s ease;
+            /* Smart display transition */
         }
-        
+
         .pet-container.hide-pets {
             opacity: 0;
             pointer-events: none;
@@ -211,28 +243,39 @@
 
         .pet-icon-wrapper {
             position: absolute;
-            bottom: 8%; /* 5-10% height as requested */
-            width: 100px; /* Increased size for detail */
+            bottom: 8%;
+            /* 5-10% height as requested */
+            width: 100px;
+            /* Increased size for detail */
             height: 100px;
             cursor: pointer;
             pointer-events: auto;
             transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            filter: drop-shadow(0 4px 6px rgba(184, 134, 11, 0.3)); /* Deep gold shadow */
+            filter: drop-shadow(0 4px 6px rgba(184, 134, 11, 0.3));
+            /* Deep gold shadow */
         }
-        
+
         /* 
            Position: Center bottom, 60% gap.
            Left center at 20% width. Right center at 80% width.
         */
-        .pet-left { left: 20%; transform: translateX(-50%); }
-        .pet-right { right: 20%; transform: translateX(50%); }
+        .pet-left {
+            left: 20%;
+            transform: translateX(-50%);
+        }
 
-        .pet-left:hover { 
-            transform: translateX(-50%) scale(1.1) translateY(-5px); 
+        .pet-right {
+            right: 20%;
+            transform: translateX(50%);
+        }
+
+        .pet-left:hover {
+            transform: translateX(-50%) scale(1.1) translateY(-5px);
             filter: drop-shadow(0 0 15px rgba(184, 134, 11, 0.6));
         }
-        .pet-right:hover { 
-            transform: translateX(50%) scale(1.1) translateY(-5px); 
+
+        .pet-right:hover {
+            transform: translateX(50%) scale(1.1) translateY(-5px);
             filter: drop-shadow(0 0 15px rgba(184, 134, 11, 0.6));
         }
 
@@ -241,14 +284,16 @@
             height: 100%;
             /* Gradient defined in SVG defs */
         }
-        
+
         /* 
         .pet-dock { ... }  <-- Removed old dock styles
         .pet-icon { ... }  <-- Removed old icon styles
         */
-        
-        .anim-bounce { animation: bouncePet 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        
+
+        .anim-bounce {
+            animation: bouncePet 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
         .pet-bubble {
             position: absolute;
             background: #fff;
@@ -261,28 +306,47 @@
             opacity: 0;
             transform: translateY(10px);
             transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             z-index: 50;
             white-space: nowrap;
         }
-        .pet-bubble.show { opacity: 1; transform: translateY(-20px); }
-        .pet-bubble::after {
-            content: ''; position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%);
-            border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 4px solid #fff;
+
+        .pet-bubble.show {
+            opacity: 1;
+            transform: translateY(-20px);
         }
-        
+
+        .pet-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 4px solid #fff;
+        }
+
         .star-particle {
             position: absolute;
-            width: 10px; height: 10px;
+            width: 10px;
+            height: 10px;
             background: #C5A06B;
             clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
             pointer-events: none;
             animation: particle-explode 0.8s ease-out forwards;
         }
-        
+
         @keyframes particle-explode {
-            0% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 1; }
-            100% { transform: translate(var(--tx), var(--ty)) scale(0) rotate(180deg); opacity: 0; }
+            0% {
+                transform: translate(0, 0) scale(1) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(var(--tx), var(--ty)) scale(0) rotate(180deg);
+                opacity: 0;
+            }
         }
 
 
@@ -294,27 +358,42 @@
             height: 100vh;
             width: 100vw;
             margin: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
         }
 
         /* ═══ Dynamic Background ═══ */
         #bg-canvas {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             z-index: -2;
             /* Elegant Flowing Gold Gradient (Dimmed 15%) */
             /* #FFF8DC (Cornsilk) -> #DAA520 (Goldenrod) adjusted */
             background: linear-gradient(135deg, #2E1A47 0%, #4c1d95 40%, #B0985A 80%, #9A7611 100%);
             opacity: 1;
         }
-        
+
         #bg-overlay-gold {
-            position: fixed; bottom: 0; left: 0; width: 100%; height: 40%;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
             z-index: -2;
             background: linear-gradient(to top, rgba(197, 160, 89, 0.08) 0%, transparent 100%);
             pointer-events: none;
         }
 
         #stars-layer {
-            position: fixed; inset: 0; z-index: -2; pointer-events: none;
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
         }
 
         .star {
@@ -327,14 +406,27 @@
         }
 
         @keyframes twinkle {
-            0%, 100% { opacity: 0.2; transform: scale(0.8); }
-            50% { opacity: 0.9; transform: scale(1.2); box-shadow: 0 0 10px rgba(255, 255, 255, 0.8); }
+
+            0%,
+            100% {
+                opacity: 0.2;
+                transform: scale(0.8);
+            }
+
+            50% {
+                opacity: 0.9;
+                transform: scale(1.2);
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            }
         }
 
         #noise-layer {
-            position: fixed; inset: 0; z-index: -1;
+            position: fixed;
+            inset: 0;
+            z-index: -1;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
-            opacity: 0.07; pointer-events: none;
+            opacity: 0.07;
+            pointer-events: none;
         }
 
         /* ═══ Typography & Effects ═══ */
@@ -342,6 +434,7 @@
             background: linear-gradient(135deg, #E5D1A6 0%, #C5A059 40%, #FFF8E7 50%, #9C7C38 60%, #7d4ea0 100%);
             background-size: 200% auto;
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: shine 6s linear infinite;
         }
@@ -349,13 +442,16 @@
         .violet-gold-splice {
             background: linear-gradient(180deg, #b088d1 0%, #C5A059 80%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: 0 4px 12px rgba(46, 26, 71, 0.5);
             font-family: 'Pinyon Script', cursive;
         }
 
         @keyframes shine {
-            to { background-position: 200% center; }
+            to {
+                background-position: 200% center;
+            }
         }
 
         .text-glow {
@@ -364,35 +460,49 @@
 
         /* ═══ Glassmorphism Cards ═══ */
         .glass-panel {
-            position: relative; /* For pets */
+            position: relative;
             background: rgba(46, 26, 71, 0.4);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(229, 209, 166, 0.15);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), inset 0 0 30px rgba(197, 160, 89, 0.05);
-            border-radius: 4px; /* More angular for couture look */
-            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+            transform: translateZ(0);
+            /* Force GPU layer */
         }
 
         /* ═══ Page Transitions ═══ */
         .page {
-            position: fixed; inset: 0;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            opacity: 0; visibility: hidden; pointer-events: none;
-            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            transform: scale(0.95);
+            position: fixed;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+            transform: scale(0.97);
             padding: 2rem;
             z-index: 10;
-            overflow-y: auto; /* Allow scrolling if content is tall */
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
         }
-        
+
         .page.active {
-            opacity: 1; visibility: visible; pointer-events: auto;
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
             transform: scale(1);
         }
-        
+
         /* Specific alignment for result page */
-        #page-result { justify-content: flex-start; padding-top: 4rem; }
+        #page-result {
+            justify-content: flex-start;
+            padding-top: 4rem;
+        }
 
         /* ═══ UI Components ═══ */
         .input-mag {
@@ -408,8 +518,15 @@
             transition: border-color 0.3s ease;
             outline: none;
         }
-        .input-mag:focus { border-bottom-color: #C5A059; }
-        .input-mag::placeholder { color: rgba(229, 209, 166, 0.3); font-style: italic; }
+
+        .input-mag:focus {
+            border-bottom-color: #C5A059;
+        }
+
+        .input-mag::placeholder {
+            color: rgba(229, 209, 166, 0.3);
+            font-style: italic;
+        }
 
         .btn-mag {
             position: relative;
@@ -425,15 +542,27 @@
             overflow: hidden;
             transition: all 0.4s ease;
         }
+
         .btn-mag::before {
-            content: ''; position: absolute; inset: 0;
+            content: '';
+            position: absolute;
+            inset: 0;
             background: #C5A059;
-            transform: scaleX(0); transform-origin: right;
+            transform: scaleX(0);
+            transform-origin: right;
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: -1;
         }
-        .btn-mag:hover { color: #1a0b2e; border-color: #C5A059; }
-        .btn-mag:hover::before { transform: scaleX(1); transform-origin: left; }
+
+        .btn-mag:hover {
+            color: #1a0b2e;
+            border-color: #C5A059;
+        }
+
+        .btn-mag:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
 
         /* ═══ Quiz Options ═══ */
         .option-card {
@@ -444,57 +573,254 @@
             cursor: pointer;
             position: relative;
             overflow: hidden;
+            background: rgba(46, 26, 71, 0.4);
+            border: 1px solid rgba(229, 209, 166, 0.15);
+            border-radius: 4px;
+            transition: background 0.15s ease-out, border-color 0.15s ease-out;
         }
+
         .option-card::after {
-            content: ''; position: absolute; inset: 0;
+            content: '';
+            position: absolute;
+            inset: 0;
             background: linear-gradient(90deg, rgba(197, 160, 89, 0), rgba(197, 160, 89, 0.1), rgba(197, 160, 89, 0));
             transform: translateX(-100%);
-            transition: transform 0.6s;
+            transition: transform 0.4s ease-out;
         }
-        .option-card:hover {
-            background: rgba(229, 209, 166, 0.08);
-            border-color: rgba(197, 160, 89, 0.3);
-            transform: translateY(-2px);
+
+        /* Only apply hover on devices with a real pointer (not touchscreens) */
+        @media (hover: hover) and (pointer: fine) {
+            .option-card:hover {
+                background: rgba(229, 209, 166, 0.08);
+                border-color: rgba(197, 160, 89, 0.3);
+                transform: translateY(-2px);
+            }
+
+            .option-card:hover::after {
+                transform: translateX(100%);
+            }
         }
-        .option-card:hover::after { transform: translateX(100%); }
-        
+
         .option-card.selected {
             background: rgba(197, 160, 89, 0.15);
             border-color: #C5A059;
-            box-shadow: 0 0 20px rgba(197, 160, 89, 0.2);
+            box-shadow: 0 0 15px rgba(197, 160, 89, 0.15);
         }
-        .option-card.selected .opt-text { color: #fff; text-shadow: 0 0 10px rgba(197, 160, 89, 0.5); }
+
+        .option-card.selected .opt-text {
+            color: #fff;
+            text-shadow: 0 0 8px rgba(197, 160, 89, 0.4);
+        }
 
         /* ═══ Progress ═══ */
         .progress-container {
-            width: 100%; height: 2px; background: rgba(255,255,255,0.1);
-            margin-top: 2rem; position: relative;
+            width: 100%;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.1);
+            margin-top: 2rem;
+            position: relative;
         }
+
         .progress-bar {
-            height: 100%; background: #C5A059; width: 0%;
+            height: 100%;
+            background: #C5A059;
+            width: 0%;
             box-shadow: 0 0 10px #C5A059;
             transition: width 0.5s ease;
         }
 
         /* ═══ Animations ═══ */
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
         }
-        .anim-float { animation: float 6s ease-in-out infinite; }
+
+        .anim-float {
+            animation: float 6s ease-in-out infinite;
+        }
 
         /* ═══ Particles Canvas ═══ */
         #particles-canvas {
-            position: fixed; inset: 0; z-index: -1; pointer-events: none;
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
         }
 
         /* ═══ Mobile Tweaks ═══ */
         @media (max-width: 640px) {
-            .magazine-title { font-size: 3rem !important; }
-            .glass-panel { padding: 1.5rem; }
+            .magazine-title {
+                font-size: 2.5rem !important;
+                line-height: 1.1 !important;
+            }
+
+            .glass-panel {
+                padding: 1.2rem !important;
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
+                background: rgba(46, 26, 71, 0.85) !important;
+            }
+
+            .page {
+                padding: 0.8rem;
+            }
+
+            #page-result {
+                padding-top: 1.5rem;
+            }
+
+            /* Pets: smaller on mobile */
+            .pet-container {
+                height: 60px;
+            }
+
+            .pet-icon-wrapper {
+                width: 50px;
+                height: 50px;
+            }
+
+            .pet-left {
+                left: 8%;
+            }
+
+            .pet-right {
+                right: 8%;
+            }
+
+            .pet-svg {
+                filter: none !important;
+            }
+
+            /* Kill expensive SVG filters */
+
+            /* Letter: fix float layout */
+            .letter-paper {
+                padding: 1.2rem !important;
+                margin: 0 !important;
+                background-image: none !important;
+                /* Remove SVG noise texture */
+            }
+
+            .letter-content .float-right {
+                float: none !important;
+                display: block;
+                width: 100px !important;
+                height: 130px !important;
+                margin: 0 auto 1rem auto !important;
+            }
+
+            #letterBody {
+                font-size: 0.95rem !important;
+                line-height: 1.7 !important;
+            }
+
+            /* Quiz */
+            #qText {
+                font-size: 1.15rem !important;
+                line-height: 1.5 !important;
+                margin-bottom: 1.5rem !important;
+            }
+
+            .option-card {
+                padding: 1rem !important;
+                margin-bottom: 0.6rem !important;
+            }
+
+            .option-card .opt-text {
+                font-size: 0.9rem !important;
+            }
+
+            #qNum {
+                font-size: 2.5rem !important;
+            }
+
+            /* Inputs & Buttons */
+            .input-mag {
+                font-size: 1.2rem;
+            }
+
+            .btn-mag {
+                padding: 0.8rem 2rem;
+                font-size: 0.85rem;
+                min-height: 44px;
+            }
+
+            /* Disable expensive animations */
+            .anim-float {
+                animation: none !important;
+            }
+
+            .animate-sway {
+                animation: none !important;
+            }
+
+            .gold-text-gradient {
+                animation: none !important;
+                background-size: 100% auto !important;
+            }
+
+            /* Star particles: use GPU layer */
+            .star {
+                will-change: opacity, transform;
+            }
+
+            /* Noise layer: remove on mobile */
+            #noise-layer {
+                display: none !important;
+            }
+
+            /* Hide expensive blur decoration */
+            .blur-3xl {
+                display: none !important;
+            }
+
+            /* Option card active state for touch */
+            .option-card:active {
+                background: rgba(229, 209, 166, 0.12);
+                border-color: rgba(197, 160, 89, 0.4);
+                transform: scale(0.98);
+            }
+
+            /* Contact modal */
+            #contactModal .glass-panel {
+                max-width: 85vw !important;
+                padding: 1.5rem !important;
+            }
+
+            #contactModal img {
+                width: 140px !important;
+                height: 140px !important;
+            }
+        }
+
+        /* Small phones (iPhone SE etc) */
+        @media (max-width: 375px) {
+            .magazine-title {
+                font-size: 2rem !important;
+            }
+
+            .glass-panel {
+                padding: 1rem !important;
+            }
+
+            #qText {
+                font-size: 1rem !important;
+            }
+
+            .option-card .opt-text {
+                font-size: 0.85rem !important;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <!-- Background Layers -->
@@ -510,24 +836,27 @@
             <div class="glass-panel p-10 md:p-16 anim-float">
                 <!-- Pets (Moved to Global Dock) -->
                 <p class="font-display text-xs tracking-[0.4em] uppercase text-fashion-400 mb-6">Volume I · 2026</p>
-                <h1 class="magazine-title font-display text-6xl md:text-8xl leading-none mb-4 text-fashion-100 drop-shadow-lg">
-                    <span class="gold-text-gradient italic pr-2">Inner</span><br><span class="gold-text-gradient italic pr-2">Compass</span>
+                <h1
+                    class="magazine-title font-display text-6xl md:text-8xl leading-none mb-4 text-fashion-100 drop-shadow-lg">
+                    <span class="gold-text-gradient italic pr-2">Inner</span><br><span
+                        class="gold-text-gradient italic pr-2">Compass</span>
                 </h1>
-                <div class="h-px w-20 bg-gradient-to-r from-transparent via-accent-gold to-transparent mx-auto my-8"></div>
+                <div class="h-px w-20 bg-gradient-to-r from-transparent via-accent-gold to-transparent mx-auto my-8">
+                </div>
                 <p class="font-body text-fashion-200 text-xl mb-10 tracking-wide font-light">
                     帮助我们选择<br>最适合我们自身的人格测评工具
                 </p>
-                
+
                 <div class="max-w-xs mx-auto mb-10">
                     <input id="nameInput" type="text" placeholder="Your Name" class="input-mag" autocomplete="off">
                 </div>
-                
+
                 <button onclick="goToCodePage()" class="btn-mag group">
                     <span>开始探索</span>
                 </button>
             </div>
         </div>
-        
+
         <!-- Decorative Elements -->
         <div class="absolute bottom-10 text-xs text-fashion-500 font-sans tracking-widest opacity-50">
             SCROLL TO EXPLORE
@@ -541,15 +870,16 @@
             <div class="font-display text-xs tracking-[0.3em] uppercase text-accent-gold mb-8">Access Verification</div>
             <h2 class="font-body text-3xl text-fashion-100 mb-2">专属通行证</h2>
             <p class="text-fashion-400 text-sm mb-10 font-light font-body">请输入您的邀请码以解锁完整体验</p>
-            
+
             <div class="relative mb-12">
-                <input id="codeInput" type="text" class="input-mag text-2xl" placeholder="CODE" 
+                <input id="codeInput" type="text" class="input-mag text-2xl" placeholder="CODE"
                     onkeydown="if(event.key==='Enter')verifyCode()">
-                <div id="codeError" class="absolute -bottom-6 left-0 w-full text-xs text-red-400 opacity-0 transition-opacity font-body">
+                <div id="codeError"
+                    class="absolute -bottom-6 left-0 w-full text-xs text-red-400 opacity-0 transition-opacity font-body">
                     无效的通行证代码
                 </div>
             </div>
-            
+
             <button onclick="verifyCode()" class="btn-mag">验证身份</button>
         </div>
     </div>
@@ -561,7 +891,8 @@
             <div class="flex justify-between items-end mb-8 px-2">
                 <div>
                     <span id="quizUserName" class="block font-body text-xl text-fashion-200 mb-1 italic"></span>
-                    <span id="quizCategory" class="font-display text-xs tracking-[0.2em] text-accent-gold uppercase"></span>
+                    <span id="quizCategory"
+                        class="font-display text-xs tracking-[0.2em] text-accent-gold uppercase"></span>
                 </div>
                 <div class="text-right">
                     <span id="qNum" class="font-display text-6xl text-fashion-100 leading-none">01</span>
@@ -574,9 +905,10 @@
                 <!-- Pets (Moved to Global Dock) -->
                 <!-- Background decoration -->
                 <div class="absolute -top-10 -right-10 w-40 h-40 bg-accent-gold opacity-5 rounded-full blur-3xl"></div>
-                
-                <h3 id="qText" class="relative font-body text-2xl md:text-3xl text-fashion-5 leading-relaxed mb-10"></h3>
-                
+
+                <h3 id="qText" class="relative font-body text-2xl md:text-3xl text-fashion-5 leading-relaxed mb-10">
+                </h3>
+
                 <div id="qOptions" class="space-y-4 relative">
                     <!-- Options injected here -->
                 </div>
@@ -616,10 +948,11 @@
         </svg>
 
         <div class="w-full max-w-4xl mx-auto pb-20 relative z-10 flex flex-col items-center">
-            
+
             <!-- Toolbar -->
             <div class="w-full flex justify-end mb-4 px-4 md:px-0 max-w-2xl">
-                 <button onclick="downloadLetter()" class="btn-mag text-xs px-6 py-2 bg-black/20 backdrop-blur hover:bg-black/40">
+                <button onclick="downloadLetter()"
+                    class="btn-mag text-xs px-6 py-2 bg-black/20 backdrop-blur hover:bg-black/40">
                     <span class="mr-2">✨</span>保存珍藏版信件
                 </button>
             </div>
@@ -628,21 +961,26 @@
             <div id="letter-container" class="letter-paper w-full max-w-2xl p-8 md:p-16 mx-4 shadow-2xl relative">
                 <!-- Envelope Flap -->
                 <div class="envelope-flap"></div>
-                
+
                 <!-- Pets (Moved to Global Dock) -->
 
                 <!-- Header -->
                 <div class="text-center mb-10 border-b border-accent-gold/30 pb-6">
                     <div class="font-script text-4xl text-fashion-700 mb-2">The Inner Compass</div>
-                    <div class="font-serif-cn text-xs tracking-[0.3em] text-accent-bronze uppercase">Personal Soul Report</div>
+                    <div class="font-serif-cn text-xs tracking-[0.3em] text-accent-bronze uppercase">Personal Soul
+                        Report</div>
                 </div>
 
                 <!-- Body -->
-                <div class="letter-content text-justify relative z-10" style="font-family: 'Didot', 'Bodoni MT', 'Times New Roman', serif;">
-                    <div class="float-right ml-6 mb-4 w-32 h-40 border-4 border-white shadow-lg rotate-2 overflow-hidden bg-gray-100">
-                        <div id="letterArt" class="w-full h-full bg-cover bg-center transition-all duration-700 contrast-110 saturate-110 sepia-[.2]"></div>
+                <div class="letter-content text-justify relative z-10"
+                    style="font-family: 'Didot', 'Bodoni MT', 'Times New Roman', serif;">
+                    <div
+                        class="float-right ml-6 mb-4 w-32 h-40 border-4 border-white shadow-lg rotate-2 overflow-hidden bg-gray-100">
+                        <div id="letterArt"
+                            class="w-full h-full bg-cover bg-center transition-all duration-700 contrast-110 saturate-110 sepia-[.2]">
+                        </div>
                     </div>
-                    
+
                     <div id="letterBody" class="mb-8 text-lg leading-loose text-[#B8860B] font-medium drop-shadow-sm">
                         <!-- Content injected here -->
                     </div>
@@ -650,7 +988,8 @@
 
                 <!-- Footer -->
                 <div class="mt-12 pt-8 text-center relative">
-                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-accent-gold/20 rounded-full flex items-center justify-center">
+                    <div
+                        class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-accent-gold/20 rounded-full flex items-center justify-center">
                         <div class="w-4 h-4 bg-accent-gold rounded-full"></div>
                     </div>
                     <div class="font-script text-5xl text-fashion-800 mb-2 violet-gold-splice">Inner Wisdom</div>
@@ -660,25 +999,45 @@
 
             <!-- Actions -->
             <div class="mt-8 flex gap-6">
-                <button onclick="showContact()" class="text-fashion-300 hover:text-white transition-colors text-sm tracking-widest border-b border-transparent hover:border-white pb-1">联系主理人</button>
-                <button onclick="restart()" class="text-fashion-300 hover:text-white transition-colors text-sm tracking-widest border-b border-transparent hover:border-white pb-1">重新开始</button>
+                <button onclick="showContact()"
+                    class="text-fashion-300 hover:text-white transition-colors text-sm tracking-widest border-b border-transparent hover:border-white pb-1">联系主理人</button>
+                <button onclick="restart()"
+                    class="text-fashion-300 hover:text-white transition-colors text-sm tracking-widest border-b border-transparent hover:border-white pb-1">重新开始</button>
             </div>
         </div>
     </div>
 
     <!-- ═══ Contact Modal ═══ -->
-    <div id="contactModal" class="fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-all duration-500 backdrop-blur-sm bg-black/60" onclick="hideContact(event)">
+    <div id="contactModal"
+        class="fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-all duration-500 backdrop-blur-sm bg-black/60"
+        onclick="hideContact(event)">
         <div class="glass-panel p-10 max-w-sm w-full text-center transform scale-95 transition-transform duration-500">
             <p class="font-display text-xs tracking-[0.2em] text-accent-gold uppercase mb-6">Connect</p>
             <div class="bg-white p-2 inline-block rounded-sm mb-6">
-                <img src="新建文件夹/80aff6399ae1c0e9d222e7db56bf6dfb.jpg" alt="WeChat" class="w-40 h-40 object-cover grayscale hover:grayscale-0 transition-all duration-500">
+                <img src="新建文件夹/80aff6399ae1c0e9d222e7db56bf6dfb.jpg" alt="WeChat"
+                    class="w-40 h-40 object-cover transition-all duration-500">
             </div>
             <p class="font-body text-fashion-300 text-sm mb-6">扫描二维码，开启深度对话</p>
-            <button onclick="hideContact()" class="text-xs text-fashion-500 hover:text-white transition-colors tracking-widest font-display">CLOSE</button>
+            <button onclick="hideContact()"
+                class="text-xs text-fashion-500 hover:text-white transition-colors tracking-widest font-display">CLOSE</button>
         </div>
     </div>
 
     <script>
+        /* ═══════════════════════════════════════
+           MOBILE DETECTION & PERFORMANCE CONFIG
+        ═══════════════════════════════════════ */
+        const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth < 768;
+        const PERF = {
+            particleCount: isMobile ? 15 : Math.min(window.innerWidth / 10, 150),
+            starCount: isMobile ? 25 : 100,
+            targetFPS: isMobile ? 24 : 60,
+            enablePetTrail: !isMobile,
+            enableShadowBlur: !isMobile,
+            petTrailLength: isMobile ? 0 : 20,
+        };
+        const FRAME_INTERVAL = 1000 / PERF.targetFPS;
+
         /* ═══════════════════════════════════════
            PARTICLE SYSTEM & PET (Canvas)
         ═══════════════════════════════════════ */
@@ -688,7 +1047,8 @@
         let pet;
         let mouse = { x: null, y: null };
 
-        // Resize
+        // Debounced Resize
+        let resizeTimer;
         function resize() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
@@ -697,20 +1057,26 @@
                 pet.y = canvas.height / 2;
             }
         }
-        window.addEventListener('resize', resize);
-        
-        // Mouse interaction
-        window.addEventListener('mousemove', (e) => {
-            mouse.x = e.clientX;
-            mouse.y = e.clientY;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(resize, 150);
         });
+
+        // Mouse interaction (desktop only — no mousemove on mobile)
+        if (!isMobile) {
+            window.addEventListener('mousemove', (e) => {
+                mouse.x = e.clientX;
+                mouse.y = e.clientY;
+            });
+        }
 
         // ═══ STARS (CSS) ═══
         function initStars() {
             const starContainer = document.getElementById('stars-layer');
-            starContainer.innerHTML = ''; // Clear existing
-            const count = 100;
-            for (let i = 0; i < count; i++) {
+            starContainer.innerHTML = '';
+            // Use DocumentFragment for batch DOM insert
+            const frag = document.createDocumentFragment();
+            for (let i = 0; i < PERF.starCount; i++) {
                 const star = document.createElement('div');
                 star.classList.add('star');
                 const x = Math.random() * 100;
@@ -718,16 +1084,11 @@
                 const size = Math.random() * 2 + 1;
                 const duration = Math.random() * 3 + 2;
                 const delay = Math.random() * 5;
-                
-                star.style.left = `${x}%`;
-                star.style.top = `${y}%`;
-                star.style.width = `${size}px`;
-                star.style.height = `${size}px`;
-                star.style.setProperty('--duration', `${duration}s`);
-                star.style.setProperty('--delay', `${delay}s`);
-                
-                starContainer.appendChild(star);
+
+                star.style.cssText = `left:${x}%;top:${y}%;width:${size}px;height:${size}px;--duration:${duration}s;--delay:${delay}s`;
+                frag.appendChild(star);
             }
+            starContainer.appendChild(frag);
         }
 
         // ═══ PET ═══
@@ -737,53 +1098,52 @@
                 this.y = canvas.height / 2;
                 this.history = []; // For trail
                 this.size = 8;
-                this.color = '#C5A06B'; // Quicksand Gold
-                this.glow = 'rgba(197, 160, 89, 0.5)';
+                this.color = '#B8860B'; // Deep Flowing Gold
+                this.glow = 'rgba(184, 134, 11, 0.5)';
             }
 
             update() {
-                // Lerp to mouse or center
                 let targetX = mouse.x || canvas.width / 2;
                 let targetY = mouse.y || canvas.height / 2;
-                
-                // Optimized easing (slower delay ~150ms feel)
                 this.x += (targetX - this.x) * 0.05;
                 this.y += (targetY - this.y) * 0.05;
 
-                // Add to history
-                this.history.push({ x: this.x, y: this.y, alpha: 1.0 });
-                if (this.history.length > 20) {
-                    this.history.shift();
+                if (PERF.enablePetTrail) {
+                    this.history.push({ x: this.x, y: this.y, alpha: 1.0 });
+                    if (this.history.length > PERF.petTrailLength) this.history.shift();
+                    this.history.forEach(p => p.alpha -= 0.05);
                 }
-
-                // Fade trail
-                this.history.forEach(p => p.alpha -= 0.05);
             }
 
             draw() {
-                // Draw trail
-                for (let i = 0; i < this.history.length; i++) {
-                    const p = this.history[i];
-                    if (p.alpha <= 0) continue;
-                    ctx.beginPath();
-                    ctx.arc(p.x, p.y, this.size * (i / this.history.length), 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(197, 160, 89, ${p.alpha * 0.3})`;
-                    ctx.fill();
+                // Draw trail (desktop only)
+                if (PERF.enablePetTrail) {
+                    for (let i = 0; i < this.history.length; i++) {
+                        const p = this.history[i];
+                        if (p.alpha <= 0) continue;
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, this.size * (i / this.history.length), 0, Math.PI * 2);
+                        ctx.fillStyle = `rgba(184, 134, 11, ${p.alpha * 0.3})`;
+                        ctx.fill();
+                    }
                 }
 
-                // Draw Body with Gradient (Metal texture)
-                const grad = ctx.createRadialGradient(this.x - 2, this.y - 2, 0, this.x, this.y, this.size);
-                grad.addColorStop(0, '#FFF8E7'); // Highlight
-                grad.addColorStop(0.4, '#C5A06B'); // Main
-                grad.addColorStop(1, '#9C7C38'); // Shadow
-                
+                // Draw body — skip expensive gradient on mobile
+                if (PERF.enableShadowBlur) {
+                    const grad = ctx.createRadialGradient(this.x - 2, this.y - 2, 0, this.x, this.y, this.size);
+                    grad.addColorStop(0, '#FFF8E7');
+                    grad.addColorStop(0.4, '#B8860B');
+                    grad.addColorStop(1, '#8B4500');
+                    ctx.fillStyle = grad;
+                    ctx.shadowBlur = 15;
+                    ctx.shadowColor = this.glow;
+                } else {
+                    ctx.fillStyle = this.color;
+                }
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = grad;
-                ctx.shadowBlur = 20;
-                ctx.shadowColor = this.glow;
                 ctx.fill();
-                ctx.shadowBlur = 0; // Reset
+                ctx.shadowBlur = 0;
             }
         }
 
@@ -796,7 +1156,7 @@
                 this.speedY = (Math.random() - 0.5) * 0.5;
                 this.life = Math.random() * 100;
                 this.maxLife = 100 + Math.random() * 100;
-                this.color = `rgba(212, 175, 55, ${Math.random() * 0.5})`; // Gold tint
+                this.color = `rgba(184, 134, 11, ${Math.random() * 0.5})`; // Deep Gold tint
             }
 
             update() {
@@ -805,8 +1165,8 @@
                 this.life++;
 
                 // Reset if dead or out of bounds
-                if (this.life > this.maxLife || 
-                    this.x < 0 || this.x > canvas.width || 
+                if (this.life > this.maxLife ||
+                    this.x < 0 || this.x > canvas.width ||
                     this.y < 0 || this.y > canvas.height) {
                     this.x = Math.random() * canvas.width;
                     this.y = Math.random() * canvas.height;
@@ -823,106 +1183,128 @@
         }
 
         function initParticles() {
-            resize(); // Init size
-            initStars(); // Init CSS stars
-            
-            pet = new Pet(); // Init Pet
+            resize();
+            initStars();
+            pet = new Pet();
 
             particles = [];
-            const particleCount = Math.min(window.innerWidth / 10, 150); // Responsive count
-            for (let i = 0; i < particleCount; i++) {
+            for (let i = 0; i < PERF.particleCount; i++) {
                 particles.push(new Particle());
             }
         }
 
-        function animateParticles() {
+        let lastFrameTime = 0;
+        function animateParticles(timestamp) {
+            requestAnimationFrame(animateParticles);
+
+            // Frame rate throttle for mobile
+            const delta = timestamp - lastFrameTime;
+            if (delta < FRAME_INTERVAL) return;
+            lastFrameTime = timestamp - (delta % FRAME_INTERVAL);
+
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            // Draw particles
+
             for (let i = 0; i < particles.length; i++) {
                 particles[i].update();
                 particles[i].draw();
             }
 
-            // Draw Pet
             if (pet) {
                 pet.update();
                 pet.draw();
             }
-
-            requestAnimationFrame(animateParticles);
         }
 
         initParticles();
-        animateParticles();
+        requestAnimationFrame(animateParticles);
 
 
         /* ═══════════════════════════════════════
            GAME LOGIC (Preserved & Adapted)
         ═══════════════════════════════════════ */
-        
+
         // Data (Same as original)
         const questions = [
-            { category: '认知偏好', text: '当你试图理解一个人时，你最想知道的是什么？', options: [
-                { text: '他的行为偏好和决策方式', type: 'mbti' },
-                { text: '他在各个特质维度上的独特组合', type: 'bigfive' },
-                { text: '驱动他行为背后的深层动机与恐惧', type: 'enneagram' },
-                { text: '他最突出的天赋和优势领域', type: 'clifton' }
-            ]},
-            { category: '认知偏好', text: '你更倾向于哪种自我认知的方式？', options: [
-                { text: '通过明确的类型分类来定位自己', type: 'mbti' },
-                { text: '通过多维度的评分来精确描述自己', type: 'bigfive' },
-                { text: '通过探索内心的核心欲望来理解自己', type: 'enneagram' },
-                { text: '通过识别并发挥自己的长处来定义自己', type: 'clifton' }
-            ]},
-            { category: '认知偏好', text: '面对一个复杂的人际冲突，你首先会怎么做？', options: [
-                { text: '分析双方的性格类型差异', type: 'mbti' },
-                { text: '考虑各自在情绪稳定性、宜人性等维度上的不同', type: 'bigfive' },
-                { text: '探究各自的核心恐惧如何在此刻被触发', type: 'enneagram' },
-                { text: '思考如何利用各自的优势来化解僵局', type: 'clifton' }
-            ]},
-            { category: '认知偏好', text: '你认为「了解自己」最终应该带来什么？', options: [
-                { text: '对自我偏好的清晰认知与接纳', type: 'mbti' },
-                { text: '对自身特质的客观、科学的认识', type: 'bigfive' },
-                { text: '深刻的精神成长与自我超越', type: 'enneagram' },
-                { text: '实际的绩效提升和职业发展', type: 'clifton' }
-            ]},
-            { category: '认知偏好', text: '在一个理想的团队中，你认为最重要的是……', options: [
-                { text: '了解每个人的类型，实现互补协作', type: 'mbti' },
-                { text: '评估团队在各项人格特质上的分布', type: 'bigfive' },
-                { text: '理解每位成员的核心动机和压力反应', type: 'enneagram' },
-                { text: '识别并合理配置团队中每个人的优势', type: 'clifton' }
-            ]},
-            { category: '探索深度', text: '如果一本人格心理学书籍的开头是这样的，哪一句最吸引你？', options: [
-                { text: '"世界上有16种根本不同的看待世界的方式。"', type: 'mbti' },
-                { text: '"人格可以被精确地分解为五个独立的维度。"', type: 'bigfive' },
-                { text: '"每个人内心深处都有一个被遗忘的童年渴望。"', type: 'enneagram' },
-                { text: '"投资你的优势，回报率将是无限的。"', type: 'clifton' }
-            ]},
-            { category: '探索深度', text: '你对「人能否被改变」这个问题怎么看？', options: [
-                { text: '核心偏好是天生的，但表达方式可以成熟', type: 'mbti' },
-                { text: '特质在一定范围内是可以变化和发展的', type: 'bigfive' },
-                { text: '人可以通过意识觉醒实现根本性的内在转化', type: 'enneagram' },
-                { text: '与其修补弱点，不如将天赋磨练成优势', type: 'clifton' }
-            ]},
-            { category: '探索深度', text: '你更喜欢哪种关于自我的解读方式？', options: [
-                { text: '简洁的类型标签，如"INFP——调停者"', type: 'mbti' },
-                { text: '详细的数据图表和百分位数报告', type: 'bigfive' },
-                { text: '深入的叙事描写和成长路径指引', type: 'enneagram' },
-                { text: '聚焦实操的才干排名和行动建议', type: 'clifton' }
-            ]},
-            { category: '探索深度', text: '在选择职业方向时，你更看重什么？', options: [
-                { text: '这份工作是否与我的性格类型相契合', type: 'mbti' },
-                { text: '客观评估我的特质是否匹配岗位要求', type: 'bigfive' },
-                { text: '这份工作是否能满足我灵魂深处的渴求', type: 'enneagram' },
-                { text: '这份工作是否能让我每天运用最擅长的事', type: 'clifton' }
-            ]},
-            { category: '探索深度', text: '你如何看待人格测评的「科学性」？', options: [
-                { text: '理论框架清晰、便于实际应用就好', type: 'mbti' },
-                { text: '必须有严谨的学术研究和数据支撑', type: 'bigfive' },
-                { text: '真正的洞见超越了传统科学的范畴', type: 'enneagram' },
-                { text: '能否带来切实的行为改变才是关键', type: 'clifton' }
-            ]}
+            {
+                category: '认知偏好', text: '当你试图理解一个人时，你最想知道的是什么？', options: [
+                    { text: '他的行为偏好和决策方式', type: 'mbti' },
+                    { text: '他在各个特质维度上的独特组合', type: 'bigfive' },
+                    { text: '驱动他行为背后的深层动机与恐惧', type: 'enneagram' },
+                    { text: '他最突出的天赋和优势领域', type: 'clifton' }
+                ]
+            },
+            {
+                category: '认知偏好', text: '你更倾向于哪种自我认知的方式？', options: [
+                    { text: '通过明确的类型分类来定位自己', type: 'mbti' },
+                    { text: '通过多维度的评分来精确描述自己', type: 'bigfive' },
+                    { text: '通过探索内心的核心欲望来理解自己', type: 'enneagram' },
+                    { text: '通过识别并发挥自己的长处来定义自己', type: 'clifton' }
+                ]
+            },
+            {
+                category: '认知偏好', text: '面对一个复杂的人际冲突，你首先会怎么做？', options: [
+                    { text: '分析双方的性格类型差异', type: 'mbti' },
+                    { text: '考虑各自在情绪稳定性、宜人性等维度上的不同', type: 'bigfive' },
+                    { text: '探究各自的核心恐惧如何在此刻被触发', type: 'enneagram' },
+                    { text: '思考如何利用各自的优势来化解僵局', type: 'clifton' }
+                ]
+            },
+            {
+                category: '认知偏好', text: '你认为「了解自己」最终应该带来什么？', options: [
+                    { text: '对自我偏好的清晰认知与接纳', type: 'mbti' },
+                    { text: '对自身特质的客观、科学的认识', type: 'bigfive' },
+                    { text: '深刻的精神成长与自我超越', type: 'enneagram' },
+                    { text: '实际的绩效提升和职业发展', type: 'clifton' }
+                ]
+            },
+            {
+                category: '认知偏好', text: '在一个理想的团队中，你认为最重要的是……', options: [
+                    { text: '了解每个人的类型，实现互补协作', type: 'mbti' },
+                    { text: '评估团队在各项人格特质上的分布', type: 'bigfive' },
+                    { text: '理解每位成员的核心动机和压力反应', type: 'enneagram' },
+                    { text: '识别并合理配置团队中每个人的优势', type: 'clifton' }
+                ]
+            },
+            {
+                category: '探索深度', text: '如果一本人格心理学书籍的开头是这样的，哪一句最吸引你？', options: [
+                    { text: '"世界上有16种根本不同的看待世界的方式。"', type: 'mbti' },
+                    { text: '"人格可以被精确地分解为五个独立的维度。"', type: 'bigfive' },
+                    { text: '"每个人内心深处都有一个被遗忘的童年渴望。"', type: 'enneagram' },
+                    { text: '"投资你的优势，回报率将是无限的。"', type: 'clifton' }
+                ]
+            },
+            {
+                category: '探索深度', text: '你对「人能否被改变」这个问题怎么看？', options: [
+                    { text: '核心偏好是天生的，但表达方式可以成熟', type: 'mbti' },
+                    { text: '特质在一定范围内是可以变化和发展的', type: 'bigfive' },
+                    { text: '人可以通过意识觉醒实现根本性的内在转化', type: 'enneagram' },
+                    { text: '与其修补弱点，不如将天赋磨练成优势', type: 'clifton' }
+                ]
+            },
+            {
+                category: '探索深度', text: '你更喜欢哪种关于自我的解读方式？', options: [
+                    { text: '简洁的类型标签，如"INFP——调停者"', type: 'mbti' },
+                    { text: '详细的数据图表和百分位数报告', type: 'bigfive' },
+                    { text: '深入的叙事描写和成长路径指引', type: 'enneagram' },
+                    { text: '聚焦实操的才干排名和行动建议', type: 'clifton' }
+                ]
+            },
+            {
+                category: '探索深度', text: '在选择职业方向时，你更看重什么？', options: [
+                    { text: '这份工作是否与我的性格类型相契合', type: 'mbti' },
+                    { text: '客观评估我的特质是否匹配岗位要求', type: 'bigfive' },
+                    { text: '这份工作是否能满足我灵魂深处的渴求', type: 'enneagram' },
+                    { text: '这份工作是否能让我每天运用最擅长的事', type: 'clifton' }
+                ]
+            },
+            {
+                category: '探索深度', text: '你如何看待人格测评的「科学性」？', options: [
+                    { text: '理论框架清晰、便于实际应用就好', type: 'mbti' },
+                    { text: '必须有严谨的学术研究和数据支撑', type: 'bigfive' },
+                    { text: '真正的洞见超越了传统科学的范畴', type: 'enneagram' },
+                    { text: '能否带来切实的行为改变才是关键', type: 'clifton' }
+                ]
+            }
         ];
 
         const results = {
@@ -975,16 +1357,24 @@
         function showPage(id, pushToHistory = true) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             const target = document.getElementById(id);
-            if(target) target.classList.add('active');
+            if (target) target.classList.add('active');
 
-            // ═══ Smart Pet Display Control ═══
-            // Hide pets on Quiz Selection Page to prevent distraction
+            // ═══ Pet Display: Only show on Home page ═══
             const petContainer = document.querySelector('.pet-container');
             if (petContainer) {
-                if (id === 'page-quiz') {
-                    petContainer.classList.add('hide-pets');
-                } else {
+                if (id === 'page-home') {
                     petContainer.classList.remove('hide-pets');
+                } else {
+                    petContainer.classList.add('hide-pets');
+                }
+            }
+
+            // ═══ Pause/Resume canvas animation on quiz pages for perf ═══
+            if (isMobile) {
+                if (id === 'page-quiz' || id === 'page-code' || id === 'page-loading') {
+                    canvas.style.display = 'none';
+                } else {
+                    canvas.style.display = '';
                 }
             }
 
@@ -1012,7 +1402,7 @@
             const codeInput = document.getElementById('codeInput');
             const code = codeInput.value.trim();
             const errEl = document.getElementById('codeError');
-            
+
             if (code === 'handsomeng') {
                 errEl.style.opacity = '0';
                 startQuiz();
@@ -1039,12 +1429,11 @@
 
             const optContainer = document.getElementById('qOptions');
             const letters = ['A', 'B', 'C', 'D'];
-            
-            // Generate HTML with stagger animation index
+
             optContainer.innerHTML = q.options.map((opt, i) => `
-                <div class="option-card glass-panel" onclick="selectAnswer('${opt.type}', this)">
+                <div class="option-card" onclick="selectAnswer('${opt.type}', this)">
                     <span class="font-display font-bold text-accent-gold mr-4 text-lg">${letters[i]}</span>
-                    <span class="opt-text font-serif-cn text-fashion-200 transition-colors">${opt.text}</span>
+                    <span class="opt-text font-serif-cn text-fashion-200">${opt.text}</span>
                 </div>
             `).join('');
 
@@ -1055,14 +1444,14 @@
 
         function selectAnswer(type, card) {
             if (card.classList.contains('selected')) return;
-            
-            // Visual feedback
+
+            // Lock all cards immediately
             const allCards = document.querySelectorAll('.option-card');
-            allCards.forEach(c => c.style.pointerEvents = 'none'); // Lock
+            allCards.forEach(c => c.style.pointerEvents = 'none');
             card.classList.add('selected');
-            
+
             scores[type]++;
-            
+
             setTimeout(() => {
                 currentQ++;
                 if (currentQ < questions.length) {
@@ -1071,7 +1460,7 @@
                     document.getElementById('progressFill').style.width = '100%';
                     showLoading();
                 }
-            }, 600);
+            }, 400);
         }
 
         function showLoading() {
@@ -1092,7 +1481,7 @@
             `;
 
             document.getElementById('letterBody').innerHTML = content;
-            
+
             // Set Art Background
             const artEl = document.getElementById('letterArt');
             artEl.style.backgroundImage = r.art;
@@ -1100,23 +1489,41 @@
             showPage('page-result');
         }
 
+        // Lazy-load html2canvas on demand
+        let html2canvasLoaded = false;
+        function loadHtml2Canvas() {
+            return new Promise((resolve, reject) => {
+                if (html2canvasLoaded) { resolve(); return; }
+                const s = document.createElement('script');
+                s.src = 'https://html2canvas.hertzen.com/dist/html2canvas.min.js';
+                s.onload = () => { html2canvasLoaded = true; resolve(); };
+                s.onerror = reject;
+                document.head.appendChild(s);
+            });
+        }
+
         function downloadLetter() {
             const element = document.getElementById('letter-container');
             const btn = document.querySelector('button[onclick="downloadLetter()"]');
-            
-            btn.innerHTML = 'Generating...';
-            
-            html2canvas(element, {
-                scale: 3, // High resolution (approx 1920px width)
-                useCORS: true,
-                backgroundColor: null,
-                logging: false
-            }).then(canvas => {
-                const link = document.createElement('a');
-                link.download = `InnerCompass_Letter_${userName}.png`;
-                link.href = canvas.toDataURL('image/png', 1.0); // Max quality
-                link.click();
-                btn.innerHTML = '<span class="mr-2">✨</span>保存珍藏版信件';
+
+            btn.innerHTML = '加载中...';
+
+            loadHtml2Canvas().then(() => {
+                btn.innerHTML = '生成中...';
+                html2canvas(element, {
+                    scale: isMobile ? 2 : 3,
+                    useCORS: true,
+                    backgroundColor: null,
+                    logging: false
+                }).then(canvas => {
+                    const link = document.createElement('a');
+                    link.download = `InnerCompass_Letter_${userName}.png`;
+                    link.href = canvas.toDataURL('image/png', 1.0);
+                    link.click();
+                    btn.innerHTML = '<span class="mr-2">✨</span>保存珍藏版信件';
+                });
+            }).catch(() => {
+                btn.innerHTML = '加载失败，请重试';
             });
         }
 
@@ -1134,71 +1541,71 @@
             modal.querySelector('div').classList.remove('scale-100');
             modal.querySelector('div').classList.add('scale-95');
         }
-        
+
         // ═══ Pet Interaction ═══
         function petInteract(el, e) {
             e.stopPropagation();
-            
+
             // 1. Bounce Animation
             el.classList.remove('anim-bounce');
             void el.offsetWidth; // Trigger reflow
             el.classList.add('anim-bounce');
-            
+
             // 2. Bubble Dialog
             showBubble(el, "你好呀");
-            
+
             // 3. Particles
             spawnParticles(e.clientX, e.clientY);
         }
-        
+
         function showBubble(targetEl, text) {
             // Remove existing bubble for this element if any
             let existing = targetEl.parentElement.querySelector('.pet-bubble-instance-' + targetEl.classList[1]);
-            if(existing) existing.remove();
-            
+            if (existing) existing.remove();
+
             const bubble = document.createElement('div');
             bubble.className = `pet-bubble pet-bubble-instance-${targetEl.classList[1]}`;
             bubble.textContent = text;
-            
+
             // Position
             const rect = targetEl.getBoundingClientRect();
             const containerRect = targetEl.parentElement.getBoundingClientRect();
-            
+
             // Calculate relative position
-            bubble.style.left = (rect.left - containerRect.left + rect.width/2 - 30) + 'px';
+            bubble.style.left = (rect.left - containerRect.left + rect.width / 2 - 30) + 'px';
             bubble.style.top = (rect.top - containerRect.top - 40) + 'px';
-            
+
             targetEl.parentElement.appendChild(bubble);
-            
+
             // Animate in
             requestAnimationFrame(() => bubble.classList.add('show'));
-            
+
             // Remove after 2s
             setTimeout(() => {
                 bubble.classList.remove('show');
                 setTimeout(() => bubble.remove(), 300);
             }, 2000);
         }
-        
+
         function spawnParticles(x, y) {
             const count = 8;
-            for(let i=0; i<count; i++) {
+            for (let i = 0; i < count; i++) {
                 const p = document.createElement('div');
                 p.classList.add('star-particle');
-                
+
                 // Random angle and distance
                 const angle = (Math.PI * 2 * i) / count;
                 const dist = 50 + Math.random() * 30;
                 const tx = Math.cos(angle) * dist + 'px';
                 const ty = Math.sin(angle) * dist + 'px';
-                
+
                 p.style.setProperty('--tx', tx);
                 p.style.setProperty('--ty', ty);
                 p.style.left = x + 'px';
                 p.style.top = y + 'px';
-                
+
                 document.body.appendChild(p);
-                
+
                 setTimeout(() => p.remove(), 800);
             }
         }
@@ -1209,4 +1616,5 @@
         }
     </script>
 </body>
+
 </html>
